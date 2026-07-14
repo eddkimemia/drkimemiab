@@ -361,6 +361,18 @@ const books = [
     categories: "lifestyle health",
     long: "Nutrition, movement, sleep, and mental health—without fads—grounded in evidence and African food realities.",
   },
+  {
+    slug: "the-night-resident",
+    coverImg: "night.png",
+    tag: "Fiction",
+    title: "The Night Resident",
+    blurb: "She worked in the graveyard shift. She nearly ended up in one.",
+    chip: "Fiction",
+    rating: "4.8",
+    pages: "320",
+    categories: "fiction thriller",
+    long: "A gripping tale of a night shift worker confronting danger and survival in the darkness.",
+  },
 ];
 
 // ==================== PAGES ====================
