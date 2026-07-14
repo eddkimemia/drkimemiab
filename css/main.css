@@ -162,15 +162,15 @@ select:focus-visible {
   }
 }
 
-.section {
-  padding: 5rem 0;
-}
+/* .section {
+  padding: 2rem 0;
+} */
 
 @media (min-width: 768px) {
   .section {
     padding: 7rem 0;
   }
-}
+} 
 
 .section--muted {
   background: var(--bg-muted);
