@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Healthy Living Simplified by Dr. Edwin Kimemia">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faf0d5"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#edfcf2"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3acd76"/>
+      <stop offset="100%" stop-color="#1f6e3b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="28" y="28" width="544" height="844" fill="none" stroke="#c8a45e" stroke-opacity="0.45" stroke-width="1.5"/>
+  <rect x="40" y="40" width="520" height="820" fill="none" stroke="#2d8a4e" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Sun / wellness circle -->
+  <g transform="translate(300,210)">
+    <circle r="48" fill="#e5b04a" opacity="0.25"/>
+    <circle r="32" fill="#e5b04a" opacity="0.55"/>
+    <circle r="18" fill="#c8a45e"/>
+    <!-- rays -->
+    <g stroke="#c8a45e" stroke-width="2.5" stroke-linecap="round" opacity="0.5">
+      <line x1="0" y1="-70" x2="0" y2="-58"/>
+      <line x1="0" y1="58" x2="0" y2="70"/>
+      <line x1="-70" y1="0" x2="-58" y2="0"/>
+      <line x1="58" y1="0" x2="70" y2="0"/>
+      <line x1="-50" y1="-50" x2="-42" y2="-42"/>
+      <line x1="42" y1="42" x2="50" y2="50"/>
+      <line x1="50" y1="-50" x2="42" y2="-42"/>
+      <line x1="-42" y1="42" x2="-50" y2="50"/>
+    </g>
+  </g>
+
+  <!-- Leaf accent -->
+  <g transform="translate(300,320)" opacity="0.9">
+    <ellipse cx="0" cy="0" rx="28" ry="48" fill="url(#leaf)" transform="rotate(-25)"/>
+    <path d="M0 40 Q-5 0 0 -40" fill="none" stroke="#edfcf2" stroke-width="2" opacity="0.7"/>
+  </g>
+
+  <text x="300" y="420" text-anchor="middle" fill="#996a24" font-family="system-ui, -apple-system, sans-serif" font-size="12" letter-spacing="4" font-weight="700">POPULAR</text>
+  <line x1="230" y1="440" x2="370" y2="440" stroke="#c8a45e" stroke-width="1" opacity="0.6"/>
+
+  <text x="300" y="510" text-anchor="middle" fill="#0a1f3a" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700">Healthy Living</text>
+  <text x="300" y="565" text-anchor="middle" fill="#1f6e3b" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700">Simplified</text>
+
+  <text x="300" y="630" text-anchor="middle" fill="#3f3f46" font-family="system-ui, -apple-system, sans-serif" font-size="15">Evidence-based wellness</text>
+  <text x="300" y="654" text-anchor="middle" fill="#3f3f46" font-family="system-ui, -apple-system, sans-serif" font-size="15">for everyday life, made simple</text>
+
+  <!-- Soft icon row -->
+  <g transform="translate(180,710)" fill="none" stroke="#2d8a4e" stroke-width="1.8" opacity="0.55">
+    <circle cx="30" cy="20" r="16"/>
+    <path d="M30 10 v20 M20 20 h20"/>
+    <circle cx="120" cy="20" r="16"/>
+    <path d="M112 20 Q120 8 128 20 Q120 32 112 20"/>
+    <circle cx="210" cy="20" r="16"/>
+    <path d="M210 12 v16 M202 20 h16"/>
+  </g>
+
+  <line x1="200" y1="780" x2="400" y2="780" stroke="#c8a45e" stroke-width="1" opacity="0.5"/>
+  <text x="300" y="820" text-anchor="middle" fill="#0a1f3a" font-family="Georgia, 'Times New Roman', serif" font-size="18">Dr. Edwin Kimemia</text>
+  <text x="300" y="848" text-anchor="middle" fill="#71717a" font-family="system-ui, -apple-system, sans-serif" font-size="12" letter-spacing="2">WELLNESS · LIFESTYLE</text>
+</svg>

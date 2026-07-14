@@ -287,24 +287,20 @@ function write(rel, html) {
 }
 
 // ---------- Book card helper ----------
-function bookCard(root, { slug, cover, tag, title, blurb, chip, chipClass, rating, pages, categories }) {
+function bookCard(root, { slug, coverImg, tag, title, blurb, chip, chipClass, rating, pages, categories }) {
   return `
   <article class="book-card reveal" data-category="${categories}">
-    <a href="${root}books/${slug}.html" class="book-cover ${cover}">
+    <a href="${root}books/${slug}.html" class="book-cover">
+      <img src="${root}images/books/${coverImg}" alt="Cover of ${title}" class="book-cover-img" width="600" height="900" loading="lazy" decoding="async">
       <span class="book-tag">${tag}</span>
-      <div>
-        <h3>${title}</h3>
-        <p>${blurb}</p>
-      </div>
-      <div class="book-meta">
-        <span>Dr. Edwin Kimemia</span>
-        <span aria-label="${rating} out of 5 stars">★ ${rating}</span>
-      </div>
     </a>
     <div class="book-info">
+      <h3 class="book-title"><a href="${root}books/${slug}.html">${title}</a></h3>
+      <p class="book-blurb">${blurb}</p>
       <div class="book-info-top">
         <span class="chip ${chipClass || ""}">${chip}</span>
         <span class="book-price">${BOOK_PRICE}</span>
+        <span class="book-rating" aria-label="${rating} out of 5 stars">★ ${rating}</span>
       </div>
       <p class="book-delivery text-xs muted">${PAY_NOTE}</p>
       <div class="book-actions">
@@ -318,7 +314,7 @@ function bookCard(root, { slug, cover, tag, title, blurb, chip, chipClass, ratin
 const books = [
   {
     slug: "dont-wait",
-    cover: "cover-1",
+    coverImg: "dont-wait.png",
     tag: "Bestseller",
     title: "Don't Wait Until You're Sick",
     blurb: "A practical guide to preventive healthcare for every African family.",
@@ -330,7 +326,7 @@ const books = [
   },
   {
     slug: "ai-powered-african",
-    cover: "cover-2",
+    coverImg: "ai-powered.png",
     tag: "New Release",
     title: "The AI-Powered African",
     blurb: "How artificial intelligence is transforming healthcare across the continent.",
@@ -343,7 +339,7 @@ const books = [
   },
   {
     slug: "prevention-blueprint",
-    cover: "cover-3",
+    coverImg: "prevention.png",
     tag: "Essential Guide",
     title: "The Prevention Blueprint",
     blurb: "Your step-by-step guide to staying healthy and avoiding disease.",
@@ -355,7 +351,7 @@ const books = [
   },
   {
     slug: "healthy-living",
-    cover: "cover-4",
+    coverImg: "healthy-living.png",
     tag: "Popular",
     title: "Healthy Living Simplified",
     blurb: "Evidence-based wellness for everyday life, made simple.",
@@ -719,10 +715,9 @@ for (const b of books) {
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../books.html">Books</a><span>/</span><span>${b.title}</span></nav>
       <div class="grid lg-grid-2" style="align-items:start;gap:3rem">
         <div class="reveal">
-          <div class="book-cover ${b.cover}" style="max-width:22rem">
+          <div class="book-cover book-cover--detail" style="max-width:22rem">
+            <img src="../images/books/${b.coverImg}" alt="Cover of ${b.title}" class="book-cover-img" width="600" height="900" decoding="async">
             <span class="book-tag">${b.tag}</span>
-            <div><h1 style="font-size:clamp(1.75rem,3vw,2.25rem);color:inherit">${b.title}</h1><p>${b.blurb}</p></div>
-            <div class="book-meta"><span>Dr. Edwin Kimemia</span><span>★ ${b.rating}</span></div>
           </div>
         </div>
         <div class="reveal">

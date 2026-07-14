@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" role="img" aria-label="Don't Wait Until You're Sick by Dr. Edwin Kimemia">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1f3a"/>
+      <stop offset="50%" stop-color="#1e3a61"/>
+      <stop offset="100%" stop-color="#142a4a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c8a45e"/>
+      <stop offset="100%" stop-color="#e5b04a"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#c8a45e" opacity="0.12"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect width="600" height="900" fill="url(#dots)"/>
+  <rect x="28" y="28" width="544" height="844" fill="none" stroke="#c8a45e" stroke-opacity="0.35" stroke-width="1.5"/>
+  <rect x="40" y="40" width="520" height="820" fill="none" stroke="#c8a45e" stroke-opacity="0.18" stroke-width="1"/>
+
+  <!-- Decorative medical cross -->
+  <g transform="translate(300,220)" opacity="0.9">
+    <circle r="72" fill="none" stroke="#c8a45e" stroke-width="2" opacity="0.5"/>
+    <circle r="52" fill="none" stroke="#c8a45e" stroke-width="1.5" opacity="0.35"/>
+    <rect x="-12" y="-36" width="24" height="72" rx="4" fill="url(#gold)"/>
+    <rect x="-36" y="-12" width="72" height="24" rx="4" fill="url(#gold)"/>
+  </g>
+
+  <text x="300" y="360" text-anchor="middle" fill="#c8a45e" font-family="Georgia, 'Times New Roman', serif" font-size="13" letter-spacing="4" font-weight="700">BESTSELLER</text>
+  <line x1="220" y1="380" x2="380" y2="380" stroke="#c8a45e" stroke-width="1" opacity="0.5"/>
+
+  <text x="300" y="460" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700">Don't Wait</text>
+  <text x="300" y="512" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700">Until You're</text>
+  <text x="300" y="564" text-anchor="middle" fill="#e5b04a" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700">Sick</text>
+
+  <text x="300" y="630" text-anchor="middle" fill="#b5c5e0" font-family="system-ui, -apple-system, sans-serif" font-size="15" letter-spacing="0.5">A practical guide to preventive</text>
+  <text x="300" y="652" text-anchor="middle" fill="#b5c5e0" font-family="system-ui, -apple-system, sans-serif" font-size="15" letter-spacing="0.5">healthcare for every African family</text>
+
+  <line x1="200" y1="700" x2="400" y2="700" stroke="#c8a45e" stroke-width="1" opacity="0.4"/>
+  <text x="300" y="750" text-anchor="middle" fill="#c8a45e" font-family="Georgia, 'Times New Roman', serif" font-size="20">Dr. Edwin Kimemia</text>
+  <text x="300" y="780" text-anchor="middle" fill="#8aa3cc" font-family="system-ui, -apple-system, sans-serif" font-size="12" letter-spacing="2">PREVENTIVE HEALTHCARE</text>
+</svg>
