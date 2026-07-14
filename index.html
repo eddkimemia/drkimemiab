@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Edwin Kimemia — Clinician, Author, Educator | Helping Africa Live Longer Through Knowledge</title>
+  <meta name="description" content="Dr. Edwin Kimemia is Africa's leading medical author, clinician, and public health educator. Discover his books on disease prevention, AI in healthcare, and healthy living.">
+  <meta name="keywords" content="Dr Edwin Kimemia, Edwin Kimemia books, best health books Kenya, African health author, disease prevention book, Kenyan medical author, medical books Africa, health education Kenya, AI books Africa, preventive healthcare books">
+  <meta name="author" content="Dr. Edwin Kimemia">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dr. Edwin Kimemia — Building a Healthier Africa, One Book at a Time">
+  <meta property="og:description" content="Clinician. Author. Educator. Helping millions make better health decisions through evidence-based medical education.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://drkimemia.com">
+  <meta property="og:image" content="https://picsum.photos/seed/drkimemia-og/1200/630.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dr. Edwin Kimemia — Building a Healthier Africa">
+  <meta name="twitter:description" content="Clinician. Author. Educator. Helping millions make better health decisions.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://drkimemia.com">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              50: '#f0f3f9',
+              100: '#dae2f0',
+              200: '#b5c5e0',
+              300: '#8aa3cc',
+              400: '#5f81b8',
+              500: '#3d64a0',
+              600: '#2f4f80',
+              700: '#1e3a61',
+              800: '#142a4a',
+              900: '#0a1f3a',
+              950: '#060f1f',
+            },
+            gold: {
+              50: '#fdf9ef',
+              100: '#faf0d5',
+              200: '#f4dea8',
+              300: '#edc972',
+              400: '#e5b04a',
+              500: '#c8a45e',
+              600: '#b8892a',
+              700: '#996a24',
+              800: '#7d5523',
+              900: '#68471f',
+            },
+            medgreen: {
+              50: '#edfcf2',
+              100: '#d3f8de',
+              200: '#aaf0c2',
+              300: '#73e29e',
+              400: '#3acd76',
+              500: '#2d8a4e',
+              600: '#1f6e3b',
+              700: '#1a5831',
+              800: '#174629',
+              900: '#143b23',
+            },
+          },
+          letterSpacing: {
+            widest: '0.2em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+  <style>
+    :root {
+      --navy: #0a1f3a;
+      --navy-light: #1e3a61;
+      --gold: #c8a45e;
+      --gold-light: #e5b04a;
+      --green: #2d8a4e;
+      --green-light: #3acd76;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-family: 'Inter', sans-serif; }
+    body { background: #ffffff; color: #1a1a1a; overflow-x: hidden; }
+    .dark body { background: #0a0a0a; color: #e5e5e5; }
+
+    /* Reading Progress Bar */
+    #reading-progress {
+      position: fixed; top: 0; left: 0; height: 3px; z-index: 9999;
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--green));
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
+    .dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+
+    /* Selection */
+    ::selection { background: var(--gold); color: #fff; }
+
+    /* Noise Overlay */
+    .noise-overlay {
+      position: fixed; inset: 0; z-index: 9998; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Book 3D Effect */
+    .book-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .book-inner {
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+    }
+    .book-card:hover .book-inner {
+      transform: rotateY(-12deg) translateY(-12px);
+      box-shadow: 25px 25px 60px rgba(10, 31, 58, 0.2), -5px -5px 20px rgba(200, 164, 94, 0.05);
+    }
+    .dark .book-card:hover .book-inner {
+      box-shadow: 25px 25px 60px rgba(0, 0, 0, 0.4), -5px -5px 20px rgba(200, 164, 94, 0.05);
+    }
+
+    .book-spine {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 28px;
+      background: rgba(0,0,0,0.15);
+      transform: rotateY(0deg);
+      border-radius: 3px 0 0 3px;
+    }
+    .book-spine::after {
+      content: '';
+      position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Hero Gradient */
+    .hero-gradient {
+      background: linear-gradient(135deg, #f0f3f9 0%, #ffffff 40%, #edfcf2 70%, #fdf9ef 100%);
+    }
+    .dark .hero-gradient {
+      background: linear-gradient(135deg, #0a0a0a 0%, #0f1520 40%, #0a1a10 70%, #15120a 100%);
+    }
+
+    /* Gold underline */
+    .gold-underline {
+      background-image: linear-gradient(var(--gold), var(--gold));
+      background-size: 0% 2px;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      transition: background-size 0.4s ease;
+      padding-bottom: 2px;
+    }
+    .gold-underline:hover { background-size: 100% 2px; }
+
+    /* Reveal animation base */
+    .reveal { opacity: 0; transform: translateY(40px); }
+
+    /* Testimonial carousel */
+    .testimonial-track {
+      display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .mobile-menu.active { transform: translateX(0); }
+
+    /* Search modal */
+    .search-modal {
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .search-modal.active { opacity: 1; pointer-events: all; }
+
+    /* Toast notification */
+    .toast {
+      transform: translateY(100px); opacity: 0;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Timeline line */
+    .timeline-line {
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--gold), var(--green), var(--navy));
+      transform: translateX(-50%);
+    }
+    @media (max-width: 768px) {
+      .timeline-line { left: 20px; }
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .accordion-content.open { max-height: 500px; }
+
+    /* Tab active */
+    .tab-btn.active {
+      background: var(--navy); color: #fff;
+    }
+    .dark .tab-btn.active {
+      background: var(--gold); color: #0a0a0a;
+    }
+
+    /* Pulse dot */
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+
+    /* Star rating */
+    .star-filled { color: var(--gold); }
+    .star-empty { color: #d4d4d8; }
+    .dark .star-empty { color: #3f3f46; }
+
+    /* Nav glass */
+    .nav-glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .dark .nav-glass {
+      background: rgba(10, 10, 10, 0.85);
+    }
+
+    /* Book cover styles */
+    .cover-1 {
+      background: linear-gradient(145deg, #0a1f3a 0%, #1e3a61 50%, #142a4a 100%);
+    }
+    .cover-2 {
+      background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+    .cover-3 {
+      background: linear-gradient(145deg, #1a5831 0%, #2d8a4e 50%, #1f6e3b 100%);
+    }
+    .cover-4 {
+      background: linear-gradient(145deg, #faf0d5 0%, #ffffff 50%, #edfcf2 100%);
+    }
+
+    /* Subtle grid pattern */
+    .grid-pattern {
+      background-image: 
+        linear-gradient(rgba(10,31,58,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10,31,58,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .dark .grid-pattern {
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    }
+
+    /* Smooth image loading */
+    img { transition: opacity 0.4s ease; }
+    img[loading="lazy"] { opacity: 0; }
+    img.loaded { opacity: 1; }
+
+    /* Focus styles for accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+  </style>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dr. Edwin Kimemia",
+    "jobTitle": ["Clinician", "Medical Author", "Public Health Educator", "Speaker"],
+    "description": "Africa's leading medical author, clinician, and public health advocate.",
+    "url": "https://drkimemia.com",
+    "sameAs": [],
+    "knowsAbout": ["Disease Prevention", "Public Health", "Medical Education", "AI in Healthcare", "Healthy Living"]
+  }
+  </script>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Noise Overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress"></div>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav id="main-nav" class="nav-glass fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-lg bg-navy-900 dark:bg-gold-500 flex items-center justify-center">
+            <span class="text-white dark:text-navy-900 font-serif font-bold text-lg">K</span>
+          </div>
+          <div class="hidden sm:block">
+            <span class="font-serif font-semibold text-navy-900 dark:text-white text-sm tracking-wide">Dr. Edwin Kimemia</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden xl:flex items-center gap-1">
+          <a href="#home" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Home</a>
+          <a href="#about" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">About</a>
+          <a href="#books" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Books</a>
+          <a href="#speaking" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Speaking</a>
+          <a href="#blog" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Blog</a>
+          <a href="#media" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Media</a>
+          <a href="#resources" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Resources</a>
+          <a href="#contact" class="nav-link px-4 py-2 text-xs font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors gold-underline">Contact</a>
+          <a href="#courses" class="nav-link px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest text-gold-600 dark:text-gold-400 border border-gold-300 dark:border-gold-700 rounded-full hover:bg-gold-50 dark:hover:bg-gold-500/10 transition-colors">Courses</a>
+        </div>
+
+        <!-- Right Actions -->
+        <div class="flex items-center gap-3">
+          <!-- Search -->
+          <button id="search-btn" class="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 hover:text-navy-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all" aria-label="Search">
+            <i data-lucide="search" class="w-[18px] h-[18px]"></i>
+          </button>
+
+          <!-- Dark Mode -->
+          <button id="dark-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 hover:text-navy-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all" aria-label="Toggle dark mode">
+            <i data-lucide="sun" class="w-[18px] h-[18px] dark:hidden"></i>
+            <i data-lucide="moon" class="w-[18px] h-[18px] hidden dark:block"></i>
+          </button>
+
+          <!-- Newsletter CTA -->
+          <a href="#newsletter" class="hidden lg:inline-flex items-center gap-2 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all hover:-translate-y-0.5 shadow-lg shadow-navy-900/10 dark:shadow-gold-500/10">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            Subscribe
+          </a>
+
+          <!-- Mobile Menu Toggle -->
+          <button id="menu-toggle" class="xl:hidden w-10 h-10 rounded-full flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all" aria-label="Menu">
+            <i data-lucide="menu" class="w-5 h-5" id="menu-icon-open"></i>
+            <i data-lucide="x" class="w-5 h-5 hidden" id="menu-icon-close"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav border -->
+    <div id="nav-border" class="absolute bottom-0 left-0 right-0 h-px bg-zinc-200/50 dark:bg-zinc-800/50 opacity-0 transition-opacity duration-500"></div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-zinc-950 pt-24 px-8 pb-10 overflow-y-auto">
+    <div class="space-y-1">
+      <a href="#home" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Home</a>
+      <a href="#about" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">About</a>
+      <a href="#books" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Books</a>
+      <a href="#speaking" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Speaking</a>
+      <a href="#blog" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Blog</a>
+      <a href="#media" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Media</a>
+      <a href="#resources" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Resources</a>
+      <a href="#courses" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-gold-600 dark:text-gold-400 hover:text-gold-500 transition-colors">Courses <span class="text-sm font-sans uppercase tracking-widest opacity-60">Coming Soon</span></a>
+      <a href="#contact" class="mobile-nav-link block py-4 border-b border-zinc-100 dark:border-zinc-800 font-serif text-2xl text-navy-900 dark:text-white hover:text-gold-600 dark:hover:text-gold-400 transition-colors">Contact</a>
+    </div>
+    <div class="mt-10">
+      <a href="#newsletter" class="mobile-nav-link inline-flex items-center gap-3 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-widest">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+        Join the Newsletter
+      </a>
+    </div>
+    <div class="mt-10 flex items-center gap-5">
+      <a href="#" class="text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+      <a href="#" class="text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+      <a href="#" class="text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+      <a href="#" class="text-zinc-400 hover:text-navy-900 dark:hover:text-white transition-colors" aria-label="YouTube"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="search-modal fixed inset-0 z-[60] bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl flex items-start justify-center pt-32 px-6">
+    <div class="w-full max-w-2xl">
+      <div class="flex items-center gap-4 border-b-2 border-navy-900 dark:border-gold-500 pb-4">
+        <i data-lucide="search" class="w-6 h-6 text-zinc-400"></i>
+        <input id="search-input" type="text" placeholder="Search books, articles, topics..." class="flex-1 bg-transparent text-2xl md:text-3xl font-serif text-navy-900 dark:text-white placeholder:text-zinc-300 dark:placeholder:text-zinc-700 outline-none">
+        <button id="search-close" class="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 hover:text-navy-900 dark:hover:text-white transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="mt-8">
+        <p class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-4">Quick Links</p>
+        <div class="space-y-3">
+          <a href="#books" class="search-result-link flex items-center gap-4 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors group">
+            <i data-lucide="book-open" class="w-5 h-5 text-gold-500"></i>
+            <div>
+              <span class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">Don't Wait Until You're Sick</span>
+              <span class="block text-sm text-zinc-400">Book · Preventive Healthcare</span>
+            </div>
+          </a>
+          <a href="#books" class="search-result-link flex items-center gap-4 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors group">
+            <i data-lucide="cpu" class="w-5 h-5 text-gold-500"></i>
+            <div>
+              <span class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">The AI-Powered African</span>
+              <span class="block text-sm text-zinc-400">Book · Technology & Health</span>
+            </div>
+          </a>
+          <a href="#blog" class="search-result-link flex items-center gap-4 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors group">
+            <i data-lucide="file-text" class="w-5 h-5 text-gold-500"></i>
+            <div>
+              <span class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">Why Prevention Is Better Than Cure</span>
+              <span class="block text-sm text-zinc-400">Article · Prevention</span>
+            </div>
+          </a>
+          <a href="#speaking" class="search-result-link flex items-center gap-4 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors group">
+            <i data-lucide="mic" class="w-5 h-5 text-gold-500"></i>
+            <div>
+              <span class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">Book Dr. Kimemia to Speak</span>
+              <span class="block text-sm text-zinc-400">Speaking · Keynotes & Workshops</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section id="home" class="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+    <!-- Subtle grid -->
+    <div class="absolute inset-0 grid-pattern"></div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute top-32 right-10 w-72 h-72 bg-gold-200/30 dark:bg-gold-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-10 w-96 h-96 bg-medgreen-100/30 dark:bg-medgreen-500/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 w-full pt-32 pb-20 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <!-- Text Content -->
+        <div class="lg:col-span-7 space-y-8">
+          <!-- Badge -->
+          <div class="reveal inline-flex items-center gap-2 bg-white/70 dark:bg-zinc-800/70 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50 rounded-full px-5 py-2">
+            <span class="w-2 h-2 rounded-full bg-medgreen-500 pulse-dot"></span>
+            <span class="text-xs font-semibold uppercase tracking-widest text-navy-700 dark:text-zinc-300">Clinician · Author · Educator</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="reveal font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-medium leading-[1.05] tracking-tight text-navy-900 dark:text-white">
+            Building a <br>
+            <span class="italic text-gold-600 dark:text-gold-400">Healthier</span> Africa, <br>
+            One Book at a Time.
+          </h1>
+
+          <!-- Subheadline -->
+          <p class="reveal text-lg md:text-xl font-light leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-xl">
+            Helping millions make better health decisions through evidence-based medical education. Prevent disease. Empower lives. Build healthier communities.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="reveal flex flex-wrap items-center gap-4">
+            <a href="#books" class="inline-flex items-center gap-2.5 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 px-7 py-4 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all hover:-translate-y-1 shadow-xl shadow-navy-900/15 dark:shadow-gold-500/15">
+              <i data-lucide="book-open" class="w-4 h-4"></i>
+              Explore My Books
+            </a>
+            <a href="#about" class="inline-flex items-center gap-2.5 border-2 border-navy-200 dark:border-zinc-700 text-navy-900 dark:text-white px-7 py-4 rounded-full text-xs font-semibold uppercase tracking-widest hover:border-navy-900 dark:hover:border-gold-500 hover:bg-navy-900 dark:hover:bg-gold-500 hover:text-white dark:hover:text-navy-900 transition-all hover:-translate-y-1">
+              Meet Dr. Kimemia
+            </a>
+            <a href="#speaking" class="inline-flex items-center gap-2.5 text-navy-700 dark:text-zinc-400 px-4 py-4 text-xs font-semibold uppercase tracking-widest hover:text-gold-600 dark:hover:text-gold-400 transition-colors">
+              <i data-lucide="mic" class="w-4 h-4"></i>
+              Book Me to Speak
+            </a>
+          </div>
+
+          <!-- Trust Metrics -->
+          <div class="reveal flex flex-wrap items-center gap-8 pt-4">
+            <div>
+              <span class="block font-serif text-3xl font-semibold text-navy-900 dark:text-white" data-count="4">0</span>
+              <span class="text-xs uppercase tracking-widest text-zinc-400">Books Published</span>
+            </div>
+            <div class="w-px h-10 bg-zinc-200 dark:bg-zinc-800"></div>
+            <div>
+              <span class="block font-serif text-3xl font-semibold text-navy-900 dark:text-white" data-count="50000">0</span>
+              <span class="text-xs uppercase tracking-widest text-zinc-400">Readers Reached</span>
+            </div>
+            <div class="w-px h-10 bg-zinc-200 dark:bg-zinc-800"></div>
+            <div>
+              <span class="block font-serif text-3xl font-semibold text-navy-900 dark:text-white" data-count="100">0</span>
+              <span class="text-xs uppercase tracking-widest text-zinc-400">Speaking Engagements</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portrait -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="reveal relative">
+            <!-- Portrait frame -->
+            <div class="relative w-72 h-96 sm:w-80 sm:h-[440px] md:w-96 md:h-[520px] rounded-2xl overflow-hidden shadow-2xl shadow-navy-900/10 dark:shadow-black/30">
+              <img src="https://picsum.photos/seed/drkimemia-portrait/800/1100.jpg" alt="Dr. Edwin Kimemia - Clinician, Author, Educator" class="w-full h-full object-cover" loading="eager">
+              <!-- Overlay gradient -->
+              <div class="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent"></div>
+            </div>
+            <!-- Decorative frame -->
+            <div class="absolute -top-4 -right-4 w-72 h-96 sm:w-80 sm:h-[440px] md:w-96 md:h-[520px] rounded-2xl border-2 border-gold-300 dark:border-gold-700/50 -z-10"></div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-6 -left-6 bg-white dark:bg-zinc-900 rounded-2xl shadow-xl p-5 border border-zinc-100 dark:border-zinc-800">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-medgreen-50 dark:bg-medgreen-900/30 flex items-center justify-center">
+                  <i data-lucide="heart-pulse" class="w-6 h-6 text-medgreen-500"></i>
+                </div>
+                <div>
+                  <span class="block text-sm font-semibold text-navy-900 dark:text-white">Evidence-Based</span>
+                  <span class="block text-xs text-zinc-400">Medical Education</span>
+                </div>
+              </div>
+            </div>
+            <!-- Gold accent line -->
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-16 h-1 bg-gold-500 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+      <span class="text-[10px] uppercase tracking-widest text-zinc-400">Scroll</span>
+      <i data-lucide="chevron-down" class="w-4 h-4 text-zinc-400"></i>
+    </div>
+  </section>
+
+  <!-- ==================== TRUST BAR / AS SEEN IN ==================== -->
+  <section class="py-12 border-y border-zinc-100 dark:border-zinc-800/50 bg-white dark:bg-zinc-950">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <p class="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 mb-8">As Featured In</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-40 dark:opacity-30">
+        <span class="font-serif text-xl md:text-2xl font-medium text-navy-900 dark:text-white">Nation Media</span>
+        <span class="font-serif text-xl md:text-2xl font-medium text-navy-900 dark:text-white">KTN News</span>
+        <span class="font-serif text-xl md:text-2xl font-medium text-navy-900 dark:text-white">Citizen TV</span>
+        <span class="font-serif text-xl md:text-2xl font-medium text-navy-900 dark:text-white">The Standard</span>
+        <span class="font-serif text-xl md:text-2xl font-medium text-navy-900 dark:text-white">BBC Africa</span>
+        <span class="font-serif text-xl md:text-2xl font-medium text-navy-900 dark:text-white">KPMG</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section id="about" class="py-24 md:py-32 bg-white dark:bg-zinc-950 relative">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <!-- Section Label -->
+      <div class="reveal flex items-center gap-4 mb-16">
+        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">About</span>
+        <div class="flex-1 h-px bg-zinc-200 dark:bg-zinc-800"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-16 lg:gap-20">
+        <!-- Left: Image + Stats -->
+        <div class="lg:col-span-5 space-y-8">
+          <div class="reveal relative rounded-2xl overflow-hidden aspect-[4/5] shadow-xl">
+            <img src="https://picsum.photos/seed/kimemia-clinic/800/1000.jpg" alt="Dr. Kimemia in clinical setting" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/30 to-transparent"></div>
+            <!-- Overlay card -->
+            <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md rounded-xl p-5">
+              <p class="font-serif text-lg italic text-navy-900 dark:text-white leading-snug">"A future where prevention becomes the first treatment."</p>
+              <p class="text-xs text-zinc-500 mt-2">— Dr. Edwin Kimemia</p>
+            </div>
+          </div>
+
+          <!-- Quick stats grid -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-xl p-5 border border-zinc-100 dark:border-zinc-800">
+              <i data-lucide="stethoscope" class="w-5 h-5 text-medgreen-500 mb-3"></i>
+              <span class="block font-serif text-2xl font-semibold text-navy-900 dark:text-white">15+</span>
+              <span class="text-xs text-zinc-500 uppercase tracking-wider">Years Clinical</span>
+            </div>
+            <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-xl p-5 border border-zinc-100 dark:border-zinc-800">
+              <i data-lucide="graduation-cap" class="w-5 h-5 text-gold-500 mb-3"></i>
+              <span class="block font-serif text-2xl font-semibold text-navy-900 dark:text-white">3</span>
+              <span class="text-xs text-zinc-500 uppercase tracking-wider">Degrees</span>
+            </div>
+            <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-xl p-5 border border-zinc-100 dark:border-zinc-800">
+              <i data-lucide="award" class="w-5 h-5 text-gold-500 mb-3"></i>
+              <span class="block font-serif text-2xl font-semibold text-navy-900 dark:text-white">12</span>
+              <span class="text-xs text-zinc-500 uppercase tracking-wider">Awards</span>
+            </div>
+            <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-xl p-5 border border-zinc-100 dark:border-zinc-800">
+              <i data-lucide="users" class="w-5 h-5 text-medgreen-500 mb-3"></i>
+              <span class="block font-serif text-2xl font-semibold text-navy-900 dark:text-white">50K+</span>
+              <span class="text-xs text-zinc-500 uppercase tracking-wider">Lives Impacted</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Bio -->
+        <div class="lg:col-span-7 space-y-8">
+          <h2 class="reveal font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white leading-tight">
+            A Clinician on a Mission to <span class="italic text-gold-600 dark:text-gold-400">Transform</span> African Healthcare
+          </h2>
+
+          <div class="reveal space-y-5 text-zinc-600 dark:text-zinc-400 font-light leading-relaxed text-lg">
+            <p>
+              Dr. Edwin Kimemia is a clinician, medical author, and public health educator whose work sits at the intersection of medicine, education, and innovation. With over fifteen years of clinical experience across Kenya and East Africa, he has witnessed firsthand the devastating consequences of preventable disease — and the transformative power of knowledge.
+            </p>
+            <p>
+              His journey into writing was born from frustration. In consultation rooms across the continent, he saw the same conditions recurring — not because treatments didn't exist, but because people didn't know how to protect themselves. He began writing to bridge the gap between medical science and everyday understanding.
+            </p>
+            <p>
+              Today, Dr. Kimemia is one of Africa's most prolific medical authors, with books spanning preventive healthcare, artificial intelligence in medicine, and practical wellness. His writing is characterized by an unwavering commitment to evidence-based science, delivered in language that every African family can understand and act upon.
+            </p>
+            <p>
+              Beyond the page, he is a sought-after keynote speaker, a medical entrepreneur, and a passionate advocate for a future where every African has access to the health knowledge they need to live longer, healthier lives.
+            </p>
+          </div>
+
+          <!-- Mission & Vision -->
+          <div class="reveal grid sm:grid-cols-2 gap-6 pt-4">
+            <div class="bg-navy-900 dark:bg-zinc-900 rounded-2xl p-6 text-white">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-lg bg-gold-500/20 flex items-center justify-center">
+                  <i data-lucide="target" class="w-5 h-5 text-gold-400"></i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400">Mission</span>
+              </div>
+              <p class="text-sm font-light leading-relaxed text-zinc-300">To make evidence-based health knowledge accessible to every African family.</p>
+            </div>
+            <div class="bg-medgreen-600 dark:bg-medgreen-900 rounded-2xl p-6 text-white">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center">
+                  <i data-lucide="eye" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="text-xs font-bold uppercase tracking-widest text-white/80">Vision</span>
+              </div>
+              <p class="text-sm font-light leading-relaxed text-white/90">A future where prevention becomes the first treatment.</p>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="reveal pt-4">
+            <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-zinc-400 mb-5">Education & Credentials</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-4 rounded-xl border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors">
+                <div class="w-2 h-2 rounded-full bg-gold-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <span class="font-medium text-navy-900 dark:text-white">Doctor of Medicine (MD)</span>
+                  <span class="block text-sm text-zinc-500">University of Nairobi</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 rounded-xl border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors">
+                <div class="w-2 h-2 rounded-full bg-gold-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <span class="font-medium text-navy-900 dark:text-white">Master of Public Health (MPH)</span>
+                  <span class="block text-sm text-zinc-500">Kenyatta University</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 rounded-xl border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors">
+                <div class="w-2 h-2 rounded-full bg-gold-500 mt-2 flex-shrink-0"></div>
+                <div>
+                  <span class="font-medium text-navy-900 dark:text-white">Certificate in Health Informatics & AI</span>
+                  <span class="block text-sm text-zinc-500">Harvard Medical School (Online)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED BOOKS ==================== -->
+  <section id="books" class="py-24 md:py-32 bg-zinc-50 dark:bg-zinc-900 relative grid-pattern">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <!-- Section Header -->
+      <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Books</span>
+            <div class="w-12 h-px bg-gold-400"></div>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+            Featured <span class="italic">Works</span>
+          </h2>
+          <p class="mt-4 text-zinc-500 font-light max-w-lg">Each book is a bridge between medical science and everyday life — written for Africans, by an African clinician.</p>
+        </div>
+        <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-navy-700 dark:text-gold-400 hover:text-gold-600 dark:hover:text-gold-300 transition-colors">
+          View All Books <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Books Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+
+        <!-- Book 1 -->
+        <div class="reveal book-card group" data-book="dont-wait">
+          <div class="book-inner relative rounded-xl overflow-hidden shadow-lg">
+            <div class="book-spine"></div>
+            <div class="cover-1 relative aspect-[3/4] p-6 flex flex-col justify-between text-white">
+              <!-- Decorative elements -->
+              <div class="absolute top-4 right-4 w-20 h-20 border border-white/10 rounded-full"></div>
+              <div class="absolute bottom-20 right-6 w-10 h-10 border border-white/5 rotate-45"></div>
+              <!-- Top -->
+              <div>
+                <span class="inline-block text-[9px] font-bold uppercase tracking-[0.2em] text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full">Bestseller</span>
+              </div>
+              <!-- Center -->
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-white/40">
+                  <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                  <span class="text-[10px] uppercase tracking-widest">Preventive Health</span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Don't Wait Until You're Sick</h3>
+                <p class="text-xs text-white/50 leading-relaxed">A practical guide to preventive healthcare for every African family.</p>
+              </div>
+              <!-- Bottom -->
+              <div class="flex items-center justify-between">
+                <span class="font-serif text-sm text-gold-400">Dr. Edwin Kimemia</span>
+                <div class="flex gap-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Info below cover -->
+          <div class="mt-5 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-semibold uppercase tracking-widest text-medgreen-600 dark:text-medgreen-400 bg-medgreen-50 dark:bg-medgreen-900/30 px-2.5 py-0.5 rounded-full">Health</span>
+              <span class="text-xs text-zinc-400">4.9 ★ · 320 pages</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all">Buy Now</button>
+              <button class="flex-1 border border-zinc-200 dark:border-zinc-700 text-navy-700 dark:text-zinc-300 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:border-navy-900 dark:hover:border-gold-500 transition-all">Preview</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="reveal book-card group" data-book="ai-african">
+          <div class="book-inner relative rounded-xl overflow-hidden shadow-lg">
+            <div class="book-spine"></div>
+            <div class="cover-2 relative aspect-[3/4] p-6 flex flex-col justify-between text-white">
+              <div class="absolute top-6 right-6 w-16 h-16 border border-cyan-400/10 rounded-full"></div>
+              <div class="absolute top-12 right-12 w-8 h-8 border border-cyan-400/5 rounded-full"></div>
+              <div>
+                <span class="inline-block text-[9px] font-bold uppercase tracking-[0.2em] text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">New Release</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-white/40">
+                  <i data-lucide="cpu" class="w-4 h-4"></i>
+                  <span class="text-[10px] uppercase tracking-widest">Technology & Health</span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">The AI-Powered African</h3>
+                <p class="text-xs text-white/50 leading-relaxed">How artificial intelligence is transforming healthcare across the continent.</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-serif text-sm text-cyan-400">Dr. Edwin Kimemia</span>
+                <div class="flex gap-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 px-2.5 py-0.5 rounded-full">AI & Tech</span>
+              <span class="text-xs text-zinc-400">4.8 ★ · 280 pages</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all">Buy Now</button>
+              <button class="flex-1 border border-zinc-200 dark:border-zinc-700 text-navy-700 dark:text-zinc-300 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:border-navy-900 dark:hover:border-gold-500 transition-all">Preview</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="reveal book-card group" data-book="prevention">
+          <div class="book-inner relative rounded-xl overflow-hidden shadow-lg">
+            <div class="book-spine"></div>
+            <div class="cover-3 relative aspect-[3/4] p-6 flex flex-col justify-between text-white">
+              <div class="absolute bottom-16 right-6 w-24 h-24 border border-white/5 rounded-full"></div>
+              <div>
+                <span class="inline-block text-[9px] font-bold uppercase tracking-[0.2em] text-white/80 bg-white/10 px-3 py-1 rounded-full">Essential Guide</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-white/40">
+                  <i data-lucide="shield-check" class="w-4 h-4"></i>
+                  <span class="text-[10px] uppercase tracking-widest">Prevention</span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">The Prevention Blueprint</h3>
+                <p class="text-xs text-white/50 leading-relaxed">Your step-by-step guide to staying healthy and avoiding disease.</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-serif text-sm text-white/80">Dr. Edwin Kimemia</span>
+                <div class="flex gap-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-400 text-gold-400"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-semibold uppercase tracking-widest text-medgreen-600 dark:text-medgreen-400 bg-medgreen-50 dark:bg-medgreen-900/30 px-2.5 py-0.5 rounded-full">Health</span>
+              <span class="text-xs text-zinc-400">4.9 ★ · 250 pages</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all">Buy Now</button>
+              <button class="flex-1 border border-zinc-200 dark:border-zinc-700 text-navy-700 dark:text-zinc-300 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:border-navy-900 dark:hover:border-gold-500 transition-all">Preview</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="reveal book-card group" data-book="healthy-living">
+          <div class="book-inner relative rounded-xl overflow-hidden shadow-lg">
+            <div class="book-spine" style="background: rgba(0,0,0,0.05);"></div>
+            <div class="cover-4 relative aspect-[3/4] p-6 flex flex-col justify-between text-navy-900">
+              <div class="absolute top-8 right-8 w-16 h-16 border border-medgreen-200 rounded-full"></div>
+              <div>
+                <span class="inline-block text-[9px] font-bold uppercase tracking-[0.2em] text-medgreen-700 bg-medgreen-100 px-3 py-1 rounded-full">Popular</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-2 text-zinc-400">
+                  <i data-lucide="leaf" class="w-4 h-4"></i>
+                  <span class="text-[10px] uppercase tracking-widest">Wellness</span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight">Healthy Living Simplified</h3>
+                <p class="text-xs text-zinc-500 leading-relaxed">Evidence-based wellness for everyday life, made simple.</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="font-serif text-sm text-navy-600">Dr. Edwin Kimemia</span>
+                <div class="flex gap-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-500 text-gold-500"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-500 text-gold-500"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-500 text-gold-500"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-500 text-gold-500"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-gold-500 text-gold-500"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-semibold uppercase tracking-widest text-medgreen-600 dark:text-medgreen-400 bg-medgreen-50 dark:bg-medgreen-900/30 px-2.5 py-0.5 rounded-full">Lifestyle</span>
+              <span class="text-xs text-zinc-400">4.7 ★ · 200 pages</span>
+            </div>
+            <div class="flex gap-2">
+              <button class="flex-1 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all">Buy Now</button>
+              <button class="flex-1 border border-zinc-200 dark:border-zinc-700 text-navy-700 dark:text-zinc-300 py-2.5 rounded-lg text-[10px] font-semibold uppercase tracking-widest hover:border-navy-900 dark:hover:border-gold-500 transition-all">Preview</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Book filter tabs -->
+      <div class="reveal flex flex-wrap items-center gap-2 mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+        <span class="text-xs text-zinc-400 mr-2">Filter:</span>
+        <button class="tab-btn active px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider border border-zinc-200 dark:border-zinc-700 transition-all" data-filter="all">All</button>
+        <button class="tab-btn px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 transition-all" data-filter="health">Health</button>
+        <button class="tab-btn px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 transition-all" data-filter="tech">Technology</button>
+        <button class="tab-btn px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 transition-all" data-filter="lifestyle">Lifestyle</button>
+        <button class="tab-btn px-4 py-2 rounded-full text-xs font-medium uppercase tracking-wider text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 transition-all" data-filter="coming">Coming Soon</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY READ MY BOOKS ==================== -->
+  <section class="py-24 md:py-32 bg-white dark:bg-zinc-950">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <!-- Left text -->
+        <div class="space-y-8">
+          <div class="reveal flex items-center gap-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Philosophy</span>
+            <div class="w-12 h-px bg-gold-400"></div>
+          </div>
+          <h2 class="reveal font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white leading-tight">
+            Why Read My <span class="italic">Books?</span>
+          </h2>
+          <p class="reveal text-zinc-500 font-light leading-relaxed text-lg">
+            Every book I write is designed with one principle: if a patient sitting across from me can understand it, it's good enough to publish.
+          </p>
+        </div>
+
+        <!-- Right: Principles grid -->
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group">
+            <div class="w-12 h-12 rounded-xl bg-gold-50 dark:bg-gold-900/20 flex items-center justify-center mb-4 group-hover:bg-gold-100 dark:group-hover:bg-gold-900/40 transition-colors">
+              <i data-lucide="message-circle" class="w-5 h-5 text-gold-600 dark:text-gold-400"></i>
+            </div>
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2">Simple Language</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">No medical jargon. Written so your grandmother can understand and your doctor would approve.</p>
+          </div>
+          <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group">
+            <div class="w-12 h-12 rounded-xl bg-medgreen-50 dark:bg-medgreen-900/20 flex items-center justify-center mb-4 group-hover:bg-medgreen-100 dark:group-hover:bg-medgreen-900/40 transition-colors">
+              <i data-lucide="microscope" class="w-5 h-5 text-medgreen-600 dark:text-medgreen-400"></i>
+            </div>
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2">Evidence-Based</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">Every claim is backed by peer-reviewed research and clinical experience.</p>
+          </div>
+          <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group">
+            <div class="w-12 h-12 rounded-xl bg-navy-50 dark:bg-navy-900/20 flex items-center justify-center mb-4 group-hover:bg-navy-100 dark:group-hover:bg-navy-900/40 transition-colors">
+              <i data-lucide="globe-africa" class="w-5 h-5 text-navy-600 dark:text-navy-400"></i>
+            </div>
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2">African Context</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">Addressing the diseases, diets, and realities that affect African families daily.</p>
+          </div>
+          <div class="reveal bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group">
+            <div class="w-12 h-12 rounded-xl bg-gold-50 dark:bg-gold-900/20 flex items-center justify-center mb-4 group-hover:bg-gold-100 dark:group-hover:bg-gold-900/40 transition-colors">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-gold-600 dark:text-gold-400"></i>
+            </div>
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2">Actionable Steps</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">Not just information — practical steps you can take today to improve your health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPEAKING SECTION ==================== -->
+  <section id="speaking" class="py-24 md:py-32 bg-navy-900 dark:bg-zinc-950 text-white relative overflow-hidden">
+    <!-- Decorative -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-medgreen-500/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Left -->
+        <div class="space-y-8">
+          <div class="reveal flex items-center gap-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">Speaking</span>
+            <div class="w-12 h-px bg-gold-500/50"></div>
+          </div>
+          <h2 class="reveal font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-tight">
+            Inspiring Audiences to <span class="italic text-gold-400">Rethink</span> Health
+          </h2>
+          <p class="reveal text-zinc-400 font-light leading-relaxed text-lg">
+            Dr. Kimemia delivers keynotes that are equal parts medically rigorous and deeply human — drawing from fifteen years of clinical experience to challenge how audiences think about prevention, technology, and the future of African health.
+          </p>
+          <div class="reveal">
+            <a href="#contact" class="inline-flex items-center gap-3 bg-gold-500 text-navy-900 px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-all hover:-translate-y-1 shadow-xl shadow-gold-500/20">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              Book Dr. Kimemia to Speak
+            </a>
+          </div>
+
+          <!-- Speaking image -->
+          <div class="reveal relative rounded-2xl overflow-hidden aspect-video shadow-xl mt-8">
+            <img src="https://picsum.photos/seed/kimemia-speaking/900/500.jpg" alt="Dr. Kimemia speaking at a conference" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-900/50 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-4 py-2">
+              <div class="w-2 h-2 rounded-full bg-red-500 pulse-dot"></div>
+              <span class="text-xs font-medium">Recent Keynote · Nairobi 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Topics -->
+        <div class="space-y-6">
+          <h3 class="reveal text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-8">Keynote Topics</h3>
+          
+          <div class="reveal group border border-zinc-700/50 rounded-xl p-6 hover:border-gold-500/30 hover:bg-white/[0.02] transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-medgreen-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="shield-check" class="w-5 h-5 text-medgreen-400"></i>
+              </div>
+              <div>
+                <h4 class="font-serif font-semibold text-lg mb-1 group-hover:text-gold-400 transition-colors">Disease Prevention as a Lifestyle</h4>
+                <p class="text-sm text-zinc-500 font-light leading-relaxed">Why the best medicine is the one you never need — and how to make prevention part of your daily life.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal group border border-zinc-700/50 rounded-xl p-6 hover:border-gold-500/30 hover:bg-white/[0.02] transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="brain" class="w-5 h-5 text-cyan-400"></i>
+              </div>
+              <div>
+                <h4 class="font-serif font-semibold text-lg mb-1 group-hover:text-gold-400 transition-colors">AI in African Healthcare</h4>
+                <p class="text-sm text-zinc-500 font-light leading-relaxed">How artificial intelligence can leapfrog Africa's healthcare infrastructure challenges.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal group border border-zinc-700/50 rounded-xl p-6 hover:border-gold-500/30 hover:bg-white/[0.02] transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-gold-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="rocket" class="w-5 h-5 text-gold-400"></i>
+              </div>
+              <div>
+                <h4 class="font-serif font-semibold text-lg mb-1 group-hover:text-gold-400 transition-colors">Medical Entrepreneurship</h4>
+                <p class="text-sm text-zinc-500 font-light leading-relaxed">Building healthcare businesses that serve communities and create sustainable impact.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal group border border-zinc-700/50 rounded-xl p-6 hover:border-gold-500/30 hover:bg-white/[0.02] transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="sparkles" class="w-5 h-5 text-purple-400"></i>
+              </div>
+              <div>
+                <h4 class="font-serif font-semibold text-lg mb-1 group-hover:text-gold-400 transition-colors">The Future of Medicine in Africa</h4>
+                <p class="text-sm text-zinc-500 font-light leading-relaxed">A visionary look at where African healthcare is headed — and what it means for all of us.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal group border border-zinc-700/50 rounded-xl p-6 hover:border-gold-500/30 hover:bg-white/[0.02] transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="heart" class="w-5 h-5 text-rose-400"></i>
+              </div>
+              <div>
+                <h4 class="font-serif font-semibold text-lg mb-1 group-hover:text-gold-400 transition-colors">Healthy Living Simplified</h4>
+                <p class="text-sm text-zinc-500 font-light leading-relaxed">Cutting through the noise to deliver what actually works for nutrition, exercise, and mental health.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal group border border-zinc-700/50 rounded-xl p-6 hover:border-gold-500/30 hover:bg-white/[0.02] transition-all cursor-pointer">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="users" class="w-5 h-5 text-amber-400"></i>
+              </div>
+              <div>
+                <h4 class="font-serif font-semibold text-lg mb-1 group-hover:text-gold-400 transition-colors">Youth Empowerment & Health Leadership</h4>
+                <p class="text-sm text-zinc-500 font-light leading-relaxed">Equipping the next generation with the knowledge to lead Africa's health transformation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MEDIA SECTION ==================== -->
+  <section id="media" class="py-24 md:py-32 bg-white dark:bg-zinc-950">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Media</span>
+            <div class="w-12 h-px bg-gold-400"></div>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+            In the <span class="italic">Spotlight</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Media Card 1 -->
+        <div class="reveal group rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-all hover:shadow-lg">
+          <div class="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+            <img src="https://picsum.photos/seed/media-tv/600/340.jpg" alt="Television appearance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+            <div class="absolute inset-0 bg-navy-900/30 flex items-center justify-center group-hover:bg-navy-900/50 transition-colors">
+              <div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-6 h-6 text-navy-900 ml-1"></i>
+              </div>
+            </div>
+            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white bg-red-600 px-3 py-1 rounded-full">TV Interview</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">"Prevention Is the Future of African Healthcare"</h4>
+            <p class="text-sm text-zinc-500 font-light">Citizen TV · The Night Show · 2024</p>
+          </div>
+        </div>
+
+        <!-- Media Card 2 -->
+        <div class="reveal group rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-all hover:shadow-lg">
+          <div class="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+            <img src="https://picsum.photos/seed/media-podcast/600/340.jpg" alt="Podcast appearance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+            <div class="absolute inset-0 bg-navy-900/30 flex items-center justify-center group-hover:bg-navy-900/50 transition-colors">
+              <div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="headphones" class="w-6 h-6 text-navy-900"></i>
+              </div>
+            </div>
+            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white bg-purple-600 px-3 py-1 rounded-full">Podcast</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">"AI Will Transform How Africa Does Medicine"</h4>
+            <p class="text-sm text-zinc-500 font-light">The African Tech Podcast · Episode 47 · 2024</p>
+          </div>
+        </div>
+
+        <!-- Media Card 3 -->
+        <div class="reveal group rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-all hover:shadow-lg">
+          <div class="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+            <img src="https://picsum.photos/seed/media-article/600/340.jpg" alt="Published article" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+            <div class="absolute inset-0 bg-navy-900/20"></div>
+            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white bg-navy-700 px-3 py-1 rounded-full">Article</span>
+          </div>
+          <div class="p-6">
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-2 group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">"Why I Left the Ward to Write Books"</h4>
+            <p class="text-sm text-zinc-500 font-light">The Standard · Long Read · 2024</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Press Kit CTA -->
+      <div class="reveal mt-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-100 dark:border-zinc-800">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-navy-100 dark:bg-navy-900 flex items-center justify-center">
+            <i data-lucide="download" class="w-5 h-5 text-navy-600 dark:text-navy-400"></i>
+          </div>
+          <div>
+            <h4 class="font-serif font-semibold text-navy-900 dark:text-white">Press & Media Kit</h4>
+            <p class="text-sm text-zinc-500">Headshots, bio, book covers, and brand assets.</p>
+          </div>
+        </div>
+        <button class="inline-flex items-center gap-2 bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all hover:-translate-y-0.5">
+          Download Kit <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BLOG SECTION ==================== -->
+  <section id="blog" class="py-24 md:py-32 bg-zinc-50 dark:bg-zinc-900 grid-pattern">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div>
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Blog</span>
+            <div class="w-12 h-px bg-gold-400"></div>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+            Latest <span class="italic">Insights</span>
+          </h2>
+          <p class="mt-4 text-zinc-500 font-light max-w-lg">Evidence-based health insights, medical myth-busting, and practical wellness advice — free for everyone.</p>
+        </div>
+        <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-navy-700 dark:text-gold-400 hover:text-gold-600 dark:hover:text-gold-300 transition-colors">
+          View All Articles <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blog Post 1 -->
+        <article class="reveal group">
+          <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-5">
+            <img src="https://picsum.photos/seed/blog-prevention/700/440.jpg" alt="Prevention article" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white bg-medgreen-600 px-3 py-1 rounded-full">Prevention</span>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-xs text-zinc-400">
+              <time>December 15, 2024</time>
+              <span>·</span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors leading-snug">
+              Why Prevention Is Better Than Cure — And Why Africa Isn't Listening
+            </h3>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed line-clamp-2">
+              The evidence is overwhelming: investing in prevention saves lives and money. So why do African health systems remain overwhelmingly reactive?
+            </p>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-navy-700 dark:text-gold-400 hover:text-gold-600 dark:hover:text-gold-300 transition-colors mt-2">
+              Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 2 -->
+        <article class="reveal group">
+          <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-5">
+            <img src="https://picsum.photos/seed/blog-ai-health/700/440.jpg" alt="AI health article" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white bg-cyan-600 px-3 py-1 rounded-full">Technology</span>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-xs text-zinc-400">
+              <time>November 28, 2024</time>
+              <span>·</span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors leading-snug">
+              5 Ways AI Is Already Changing Healthcare in Kenya
+            </h3>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed line-clamp-2">
+              From diagnostic tools to telemedicine platforms, artificial intelligence is quietly revolutionizing how healthcare is delivered across Kenya.
+            </p>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-navy-700 dark:text-gold-400 hover:text-gold-600 dark:hover:text-gold-300 transition-colors mt-2">
+              Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 3 -->
+        <article class="reveal group">
+          <div class="relative rounded-2xl overflow-hidden aspect-[16/10] mb-5">
+            <img src="https://picsum.photos/seed/blog-myths/700/440.jpg" alt="Medical myths article" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+            <span class="absolute top-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white bg-red-600 px-3 py-1 rounded-full">Myth-Busting</span>
+          </div>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-xs text-zinc-400">
+              <time>November 10, 2024</time>
+              <span>·</span>
+              <span>10 min read</span>
+            </div>
+            <h3 class="font-serif text-xl font-semibold text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors leading-snug">
+              7 Medical Myths That Are Still Killing Africans
+            </h3>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed line-clamp-2">
+              From "malaria is caused by cold weather" to "cancer is a white man's disease" — these dangerous myths persist. Here's what science actually says.
+            </p>
+            <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-navy-700 dark:text-gold-400 hover:text-gold-600 dark:hover:text-gold-300 transition-colors mt-2">
+              Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Blog Categories -->
+      <div class="reveal flex flex-wrap gap-2 mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+        <span class="text-xs text-zinc-400 mr-2 py-1">Topics:</span>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">Prevention</a>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">Nutrition</a>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">Mental Health</a>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">AI & Technology</a>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">Exercise</a>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">Medical Myths</a>
+        <a href="#" class="px-4 py-1.5 rounded-full text-xs font-medium text-zinc-500 border border-zinc-200 dark:border-zinc-700 hover:border-navy-900 dark:hover:border-gold-500 hover:text-navy-900 dark:hover:text-gold-400 transition-all">Leadership</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section class="py-24 md:py-32 bg-white dark:bg-zinc-950 overflow-hidden">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="reveal text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <div class="w-12 h-px bg-gold-400"></div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Testimonials</span>
+          <div class="w-12 h-px bg-gold-400"></div>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+          What <span class="italic">Readers</span> Say
+        </h2>
+      </div>
+
+      <!-- Testimonial Carousel -->
+      <div class="relative">
+        <div class="overflow-hidden rounded-2xl">
+          <div id="testimonial-track" class="testimonial-track">
+            <!-- Testimonial 1 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="max-w-3xl mx-auto text-center">
+                <div class="flex justify-center gap-1 mb-6">
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                </div>
+                <blockquote class="font-serif text-xl sm:text-2xl md:text-3xl text-navy-900 dark:text-white leading-relaxed italic mb-8">
+                  "Don't Wait Until You're Sick changed how my entire family thinks about health. We've shifted from reactive care to preventive living. This book should be in every African home."
+                </blockquote>
+                <div class="flex items-center justify-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-navy-100 dark:bg-zinc-800 flex items-center justify-center">
+                    <span class="font-serif font-semibold text-navy-600 dark:text-zinc-300">AW</span>
+                  </div>
+                  <div class="text-left">
+                    <span class="block font-medium text-navy-900 dark:text-white">Alice Wanjiku</span>
+                    <span class="block text-sm text-zinc-500">Nurse · Nairobi</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="max-w-3xl mx-auto text-center">
+                <div class="flex justify-center gap-1 mb-6">
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                </div>
+                <blockquote class="font-serif text-xl sm:text-2xl md:text-3xl text-navy-900 dark:text-white leading-relaxed italic mb-8">
+                  "As a tech founder in Lagos, The AI-Powered African opened my eyes to opportunities I hadn't considered. Dr. Kimemia writes with the clarity of a teacher and the vision of a futurist."
+                </blockquote>
+                <div class="flex items-center justify-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-gold-100 dark:bg-zinc-800 flex items-center justify-center">
+                    <span class="font-serif font-semibold text-gold-600 dark:text-zinc-300">CO</span>
+                  </div>
+                  <div class="text-left">
+                    <span class="block font-medium text-navy-900 dark:text-white">Chinedu Okafor</span>
+                    <span class="block text-sm text-zinc-500">Tech Entrepreneur · Lagos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="w-full flex-shrink-0 px-4">
+              <div class="max-w-3xl mx-auto text-center">
+                <div class="flex justify-center gap-1 mb-6">
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                  <i data-lucide="star" class="w-5 h-5 fill-gold-400 text-gold-400"></i>
+                </div>
+                <blockquote class="font-serif text-xl sm:text-2xl md:text-3xl text-navy-900 dark:text-white leading-relaxed italic mb-8">
+                  "I bought The Prevention Blueprint for my clinic's waiting room. Within weeks, patients were asking better questions and making lifestyle changes. The impact is real."
+                </blockquote>
+                <div class="flex items-center justify-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-medgreen-100 dark:bg-zinc-800 flex items-center justify-center">
+                    <span class="font-serif font-semibold text-medgreen-600 dark:text-zinc-300">DM</span>
+                  </div>
+                  <div class="text-left">
+                    <span class="block font-medium text-navy-900 dark:text-white">Dr. David Mutua</span>
+                    <span class="block text-sm text-zinc-500">Physician · Mombasa</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="flex items-center justify-center gap-4 mt-10">
+          <button id="prev-testimonial" class="w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-zinc-500 hover:border-navy-900 hover:text-navy-900 dark:hover:border-gold-500 dark:hover:text-gold-400 transition-all">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          </button>
+          <div class="flex gap-2" id="testimonial-dots">
+            <button class="w-2.5 h-2.5 rounded-full bg-navy-900 dark:bg-gold-500 transition-all" data-dot="0"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 transition-all" data-dot="1"></button>
+            <button class="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 transition-all" data-dot="2"></button>
+          </div>
+          <button id="next-testimonial" class="w-12 h-12 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-zinc-500 hover:border-navy-900 hover:text-navy-900 dark:hover:border-gold-500 dark:hover:text-gold-400 transition-all">
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FREE RESOURCES ==================== -->
+  <section id="resources" class="py-24 md:py-32 bg-zinc-50 dark:bg-zinc-900 grid-pattern">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="reveal text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <div class="w-12 h-px bg-gold-400"></div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Free Resources</span>
+          <div class="w-12 h-px bg-gold-400"></div>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+          Tools for a <span class="italic">Healthier</span> Life
+        </h2>
+        <p class="mt-4 text-zinc-500 font-light max-w-lg mx-auto">Downloadable guides, checklists, and trackers — completely free, because health knowledge should never have a paywall.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal group bg-white dark:bg-zinc-800 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-700 hover:border-gold-200 dark:hover:border-gold-700 hover:shadow-lg transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-900/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="file-text" class="w-5 h-5 text-red-500"></i>
+          </div>
+          <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-1">Preventive Care Checklist</h4>
+          <p class="text-sm text-zinc-500 font-light mb-4">Age-by-age health screenings every African should know about.</p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold-600 dark:text-gold-400">
+            Download PDF <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
+
+        <div class="reveal group bg-white dark:bg-zinc-800 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-700 hover:border-gold-200 dark:hover:border-gold-700 hover:shadow-lg transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="salad" class="w-5 h-5 text-green-500"></i>
+          </div>
+          <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-1">African Meal Plan Guide</h4>
+          <p class="text-sm text-zinc-500 font-light mb-4">7-day balanced meal plans using locally available foods.</p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold-600 dark:text-gold-400">
+            Download PDF <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
+
+        <div class="reveal group bg-white dark:bg-zinc-800 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-700 hover:border-gold-200 dark:hover:border-gold-700 hover:shadow-lg transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="activity" class="w-5 h-5 text-blue-500"></i>
+          </div>
+          <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-1">Blood Pressure Tracker</h4>
+          <p class="text-sm text-zinc-500 font-light mb-4">Monitor your readings and spot trends over time.</p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold-600 dark:text-gold-400">
+            Download PDF <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
+
+        <div class="reveal group bg-white dark:bg-zinc-800 rounded-2xl p-6 border border-zinc-100 dark:border-zinc-700 hover:border-gold-200 dark:hover:border-gold-700 hover:shadow-lg transition-all cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="calculator" class="w-5 h-5 text-purple-500"></i>
+          </div>
+          <h4 class="font-serif font-semibold text-navy-900 dark:text-white mb-1">BMI Calculator</h4>
+          <p class="text-sm text-zinc-500 font-light mb-4">Understand your body mass index and what it means for you.</p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-gold-600 dark:text-gold-400">
+            Use Free Tool <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== UPCOMING BOOKS / ROADMAP ==================== -->
+  <section id="courses" class="py-24 md:py-32 bg-white dark:bg-zinc-950">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="reveal text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <div class="w-12 h-px bg-gold-400"></div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Coming Soon</span>
+          <div class="w-12 h-px bg-gold-400"></div>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+          What's <span class="italic">Next</span>
+        </h2>
+      </div>
+
+      <!-- Timeline Roadmap -->
+      <div class="max-w-3xl mx-auto space-y-0">
+        <!-- 2025 -->
+        <div class="reveal relative flex gap-6 pb-12">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-gold-500 flex items-center justify-center text-white font-serif font-bold text-sm flex-shrink-0">25</div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-gold-400 to-medgreen-400 mt-2"></div>
+          </div>
+          <div class="pb-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold-600 dark:text-gold-400">2025</span>
+            <h4 class="font-serif text-xl font-semibold text-navy-900 dark:text-white mt-2 mb-2">Digital Health Academy</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">An online learning platform with courses on preventive healthcare, medical literacy, and healthy living — designed for African audiences.</p>
+            <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-widest text-white bg-navy-900 dark:bg-gold-500 dark:text-navy-900 px-3 py-1 rounded-full">Platform Launch</span>
+          </div>
+        </div>
+
+        <!-- 2026 -->
+        <div class="reveal relative flex gap-6 pb-12">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-medgreen-500 flex items-center justify-center text-white font-serif font-bold text-sm flex-shrink-0">26</div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-medgreen-400 to-navy-400 mt-2"></div>
+          </div>
+          <div class="pb-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-medgreen-600 dark:text-medgreen-400">2026</span>
+            <h4 class="font-serif text-xl font-semibold text-navy-900 dark:text-white mt-2 mb-2">Children's Health Book Series</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">A vibrant, illustrated series teaching children across Africa about their bodies, hygiene, nutrition, and why doctors are their friends.</p>
+            <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-widest text-white bg-medgreen-600 px-3 py-1 rounded-full">3 Books</span>
+          </div>
+        </div>
+
+        <!-- 2027 -->
+        <div class="reveal relative flex gap-6 pb-12">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-navy-700 flex items-center justify-center text-white font-serif font-bold text-sm flex-shrink-0">27</div>
+            <div class="w-0.5 flex-1 bg-gradient-to-b from-navy-400 to-zinc-300 dark:to-zinc-700 mt-2"></div>
+          </div>
+          <div class="pb-2">
+            <span class="text-xs font-bold uppercase tracking-widest text-navy-600 dark:text-navy-400">2027</span>
+            <h4 class="font-serif text-xl font-semibold text-navy-900 dark:text-white mt-2 mb-2">The Health Leadership Handbook</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">A comprehensive guide for healthcare professionals stepping into leadership roles across Africa's evolving medical landscape.</p>
+            <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-widest text-navy-700 dark:text-zinc-400 border border-navy-200 dark:border-zinc-700 px-3 py-1 rounded-full">Book</span>
+          </div>
+        </div>
+
+        <!-- Beyond -->
+        <div class="reveal relative flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 flex-shrink-0">
+              <i data-lucide="infinity" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-zinc-400">Beyond</span>
+            <h4 class="font-serif text-xl font-semibold text-navy-900 dark:text-white mt-2 mb-2">A Publishing Brand & Health Movement</h4>
+            <p class="text-sm text-zinc-500 font-light leading-relaxed">Growing into a full publishing house, health resource center, podcast network, and membership community — all serving one mission.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY ==================== -->
+  <section class="py-24 md:py-32 bg-zinc-50 dark:bg-zinc-900">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="reveal text-center mb-16">
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <div class="w-12 h-px bg-gold-400"></div>
+          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Gallery</span>
+          <div class="w-12 h-px bg-gold-400"></div>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white">
+          Moments & <span class="italic">Milestones</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div class="reveal rounded-xl overflow-hidden aspect-square group">
+          <img src="https://picsum.photos/seed/gallery-1/500/500.jpg" alt="Book launch event" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+        <div class="reveal rounded-xl overflow-hidden aspect-[3/4] md:row-span-2 group">
+          <img src="https://picsum.photos/seed/gallery-2/500/667.jpg" alt="Speaking at conference" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+        <div class="reveal rounded-xl overflow-hidden aspect-square group">
+          <img src="https://picsum.photos/seed/gallery-3/500/500.jpg" alt="Community outreach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+        <div class="reveal rounded-xl overflow-hidden aspect-square group">
+          <img src="https://picsum.photos/seed/gallery-4/500/500.jpg" alt="Clinical work" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+        <div class="reveal rounded-xl overflow-hidden aspect-square group">
+          <img src="https://picsum.photos/seed/gallery-5/500/500.jpg" alt="Book signing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+        <div class="reveal rounded-xl overflow-hidden aspect-square group">
+          <img src="https://picsum.photos/seed/gallery-6/500/500.jpg" alt="Media interview" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+        <div class="reveal rounded-xl overflow-hidden aspect-square group">
+          <img src="https://picsum.photos/seed/gallery-7/500/500.jpg" alt="Award ceremony" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER ==================== -->
+  <section id="newsletter" class="py-24 md:py-32 bg-navy-900 dark:bg-zinc-950 text-white relative overflow-hidden">
+    <!-- Decorative -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-10 right-20 w-[300px] h-[300px] bg-medgreen-500/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-2xl mx-auto px-6 lg:px-10 text-center relative z-10">
+      <div class="reveal">
+        <div class="w-16 h-16 rounded-2xl bg-gold-500/10 flex items-center justify-center mx-auto mb-8">
+          <i data-lucide="mail" class="w-7 h-7 text-gold-400"></i>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-tight mb-6">
+          Join Thousands Learning <br>How to <span class="italic text-gold-400">Live Healthier</span>
+        </h2>
+        <p class="text-zinc-400 font-light leading-relaxed text-lg mb-10 max-w-lg mx-auto">
+          Get free health tips, early access to new books, exclusive chapters, and resources delivered to your inbox every week.
+        </p>
+      </div>
+
+      <form id="newsletter-form" class="reveal flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" id="newsletter-email" placeholder="Enter your email address" required class="flex-1 bg-white/10 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-zinc-500 text-sm focus:outline-none focus:border-gold-500/50 focus:bg-white/15 transition-all">
+        <button type="submit" class="bg-gold-500 text-navy-900 px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gold-400 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold-500/20 whitespace-nowrap">
+          Subscribe
+        </button>
+      </form>
+
+      <div class="reveal flex flex-wrap items-center justify-center gap-6 mt-8 text-xs text-zinc-500">
+        <span class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-medgreen-400"></i> Free forever</span>
+        <span class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-medgreen-400"></i> No spam</span>
+        <span class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-medgreen-400"></i> Unsubscribe anytime</span>
+        <span class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-medgreen-400"></i> 12,000+ subscribers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section id="contact" class="py-24 md:py-32 bg-white dark:bg-zinc-950">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Left -->
+        <div class="space-y-8">
+          <div class="reveal flex items-center gap-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600 dark:text-gold-400">Contact</span>
+            <div class="w-12 h-px bg-gold-400"></div>
+          </div>
+          <h2 class="reveal font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-navy-900 dark:text-white leading-tight">
+            Let's <span class="italic">Connect</span>
+          </h2>
+          <p class="reveal text-zinc-500 font-light leading-relaxed text-lg">
+            Whether you're interested in a speaking engagement, media inquiry, bulk book order, or partnership — I'd love to hear from you.
+          </p>
+
+          <!-- Contact Options -->
+          <div class="reveal space-y-5 pt-4">
+            <div class="flex items-start gap-4 p-5 rounded-xl border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group cursor-pointer">
+              <div class="w-12 h-12 rounded-xl bg-gold-50 dark:bg-gold-900/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="mic" class="w-5 h-5 text-gold-600 dark:text-gold-400"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">Speaking Engagements</h4>
+                <p class="text-sm text-zinc-500 font-light mt-1">Keynotes, workshops, panels, and conferences.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-5 rounded-xl border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group cursor-pointer">
+              <div class="w-12 h-12 rounded-xl bg-navy-50 dark:bg-navy-900/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="tv" class="w-5 h-5 text-navy-600 dark:text-navy-400"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">Media & Press</h4>
+                <p class="text-sm text-zinc-500 font-light mt-1">Interviews, podcasts, articles, and features.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-5 rounded-xl border border-zinc-100 dark:border-zinc-800 hover:border-gold-200 dark:hover:border-gold-800 transition-colors group cursor-pointer">
+              <div class="w-12 h-12 rounded-xl bg-medgreen-50 dark:bg-medgreen-900/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="building-2" class="w-5 h-5 text-medgreen-600 dark:text-medgreen-400"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-navy-900 dark:text-white group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">Partnerships & Bulk Orders</h4>
+                <p class="text-sm text-zinc-500 font-light mt-1">Corporate wellness, hospital partnerships, and bulk book orders.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal">
+          <form id="contact-form" class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800 space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-2">First Name *</label>
+                <input type="text" required class="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-navy-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Edwin">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-2">Last Name *</label>
+                <input type="text" required class="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-navy-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-gold-400 transition-colors" placeholder="Kimemia">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-2">Email *</label>
+              <input type="email" required class="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-navy-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-gold-400 transition-colors" placeholder="you@example.com">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-2">Inquiry Type *</label>
+              <select required class="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-navy-900 dark:text-white focus:outline-none focus:border-gold-400 transition-colors appearance-none">
+                <option value="" disabled selected>Select an option</option>
+                <option>Speaking Engagement</option>
+                <option>Media / Press Inquiry</option>
+                <option>Bulk Book Order</option>
+                <option>Corporate Wellness Partnership</option>
+                <option>Hospital / Clinic Partnership</option>
+                <option>Book Review Request</option>
+                <option>General Inquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-2">Message *</label>
+              <textarea required rows="5" class="w-full bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-navy-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:border-gold-400 transition-colors resize-none" placeholder="Tell me about your inquiry..."></textarea>
+            </div>
+            <button type="submit" class="w-full bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-navy-800 dark:hover:bg-gold-400 transition-all hover:-translate-y-0.5 shadow-lg">
+              Send Message
+            </button>
+            <p class="text-xs text-zinc-400 text-center">I typically respond within 48 hours.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-navy-950 dark:bg-black text-white pt-20 pb-8">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-10 pb-16 border-b border-white/10">
+        <!-- Brand -->
+        <div class="lg:col-span-4 space-y-6">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-gold-500 flex items-center justify-center">
+              <span class="text-navy-900 font-serif font-bold text-lg">K</span>
+            </div>
+            <span class="font-serif font-semibold text-lg">Dr. Edwin Kimemia</span>
+          </div>
+          <p class="text-sm text-zinc-500 font-light leading-relaxed max-w-sm">
+            Helping Africa live longer through knowledge. Clinician, author, educator, and advocate for preventive healthcare.
+          </p>
+          <!-- Social -->
+          <div class="flex items-center gap-4">
+            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-gold-500 hover:bg-gold-500/10 transition-all" aria-label="Twitter">
+              <i data-lucide="twitter" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-gold-500 hover:bg-gold-500/10 transition-all" aria-label="LinkedIn">
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-gold-500 hover:bg-gold-500/10 transition-all" aria-label="Instagram">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-gold-500 hover:bg-gold-500/10 transition-all" aria-label="YouTube">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-gold-500 hover:bg-gold-500/10 transition-all" aria-label="Facebook">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-5">Navigate</h4>
+          <ul class="space-y-3">
+            <li><a href="#home" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Home</a></li>
+            <li><a href="#about" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">About</a></li>
+            <li><a href="#books" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Books</a></li>
+            <li><a href="#speaking" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Speaking</a></li>
+            <li><a href="#blog" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-5">More</h4>
+          <ul class="space-y-3">
+            <li><a href="#media" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Media</a></li>
+            <li><a href="#resources" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Resources</a></li>
+            <li><a href="#courses" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Courses</a></li>
+            <li><a href="#contact" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Contact</a></li>
+            <li><a href="#newsletter" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Newsletter</a></li>
+          </ul>
+        </div>
+
+        <!-- Books -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-5">Books</h4>
+          <ul class="space-y-3">
+            <li><a href="#books" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Don't Wait Until You're Sick</a></li>
+            <li><a href="#books" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">The AI-Powered African</a></li>
+            <li><a href="#books" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">The Prevention Blueprint</a></li>
+            <li><a href="#books" class="text-sm text-zinc-400 hover:text-gold-400 transition-colors">Healthy Living Simplified</a></li>
+          </ul>
+        </div>
+
+        <!-- Footer Newsletter Mini -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-5">Stay Updated</h4>
+          <p class="text-sm text-zinc-500 font-light mb-4">Join 12,000+ readers.</p>
+          <a href="#newsletter" class="inline-flex items-center gap-2 bg-gold-500 text-navy-900 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-gold-400 transition-all">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            Subscribe
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8">
+        <p class="text-xs text-zinc-600">© 2024 Dr. Edwin Kimemia. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Terms of Service</a>
+          <a href="#" class="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="toast fixed bottom-8 right-8 z-[100] bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 rounded-2xl px-6 py-4 shadow-2xl flex items-center gap-3 max-w-sm">
+    <div class="w-8 h-8 rounded-full bg-medgreen-500 dark:bg-navy-900 flex items-center justify-center flex-shrink-0">
+      <i data-lucide="check" class="w-4 h-4 text-white dark:text-gold-500"></i>
+    </div>
+    <span id="toast-message" class="text-sm font-medium">Success!</span>
+  </div>
+
+  <!-- ==================== BACK TO TOP ==================== -->
+  <button id="back-to-top" class="fixed bottom-8 left-8 z-50 w-12 h-12 rounded-full bg-navy-900 dark:bg-gold-500 text-white dark:text-navy-900 shadow-xl flex items-center justify-center opacity-0 pointer-events-none transition-all hover:-translate-y-1" aria-label="Back to top">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // ==================== LENIS SMOOTH SCROLL ====================
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Handle anchor links with Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          lenis.scrollTo(target, { offset: -80 });
+        }
+        // Close mobile menu if open
+        closeMobileMenu();
+      });
+    });
+
+    // ==================== GSAP + SCROLLTRIGGER ====================
+    gsap.registerPlugin(ScrollTrigger);
+        // Sync Lenis with ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+
+    // ==================== REVEAL ANIMATIONS ====================
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach((el, i) => {
+      gsap.fromTo(el, 
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          delay: (i % 4) * 0.1,
+        }
+      );
+    });
+
+    // ==================== READING PROGRESS BAR ====================
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // ==================== STICKY NAV BORDER ====================
+    const nav = document.getElementById('main-nav');
+    const navBorder = document.getElementById('nav-border');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navBorder.style.opacity = '1';
+      } else {
+        navBorder.style.opacity = '0';
+      }
+    });
+
+    // ==================== DARK MODE ====================
+    const darkToggle = document.getElementById('dark-toggle');
+    const html = document.documentElement;
+
+    // Check saved preference or system preference
+    if (localStorage.getItem('darkMode') === 'true' || 
+        (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    }
+
+    darkToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('darkMode', html.classList.contains('dark'));
+      // Re-init icons for dark mode toggle visibility
+      lucide.createIcons();
+    });
+
+    // ==================== MOBILE MENU ====================
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+    let menuOpen = false;
+
+    function openMobileMenu() {
+      menuOpen = true;
+      mobileMenu.classList.add('active');
+      menuIconOpen.classList.add('hidden');
+      menuIconClose.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      lenis.stop();
+    }
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('active');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+      document.body.style.overflow = '';
+      lenis.start();
+    }
+
+    menuToggle.addEventListener('click', () => {
+      if (menuOpen) closeMobileMenu();
+      else openMobileMenu();
+    });
+
+    // ==================== SEARCH MODAL ====================
+    const searchBtn = document.getElementById('search-btn');
+    const searchModal = document.getElementById('search-modal');
+    const searchClose = document.getElementById('search-close');
+    const searchInput = document.getElementById('search-input');
+
+    searchBtn.addEventListener('click', () => {
+      searchModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lenis.stop();
+      setTimeout(() => searchInput.focus(), 300);
+    });
+
+    searchClose.addEventListener('click', () => {
+      searchModal.classList.remove('active');
+      document.body.style.overflow = '';
+      lenis.start();
+      searchInput.value = '';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchModal.classList.remove('active');
+        document.body.style.overflow = '';
+        lenis.start();
+        closeMobileMenu();
+      }
+      // Cmd/Ctrl + K to open search
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        searchModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lenis.stop();
+        setTimeout(() => searchInput.focus(), 300);
+      }
+    });
+
+    // Close search on link click
+    document.querySelectorAll('.search-result-link').forEach(link => {
+      link.addEventListener('click', () => {
+        searchModal.classList.remove('active');
+        document.body.style.overflow = '';
+        lenis.start();
+      });
+    });
+
+    // ==================== TESTIMONIAL CAROUSEL ====================
+    const track = document.getElementById('testimonial-track');
+    const dots = document.querySelectorAll('#testimonial-dots button');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.className = i === index 
+          ? 'w-2.5 h-2.5 rounded-full bg-navy-900 dark:bg-gold-500 transition-all' 
+          : 'w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700 transition-all';
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentSlide === 0 ? totalSlides - 1 : currentSlide - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentSlide === totalSlides - 1 ? 0 : currentSlide + 1);
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(parseInt(dot.dataset.dot));
+      });
+    });
+
+    // Auto-advance testimonials
+    let testimonialInterval = setInterval(() => {
+      goToSlide(currentSlide === totalSlides - 1 ? 0 : currentSlide + 1);
+    }, 6000);
+
+    // Pause on hover
+    track.parentElement.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+    track.parentElement.addEventListener('mouseleave', () => {
+      testimonialInterval = setInterval(() => {
+        goToSlide(currentSlide === totalSlides - 1 ? 0 : currentSlide + 1);
+      }, 6000);
+    });
+
+    // ==================== BOOK FILTER TABS ====================
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // In a full implementation, this would filter books
+        // For demo, we show a toast
+        if (btn.dataset.filter !== 'all') {
+          showToast(`Showing ${btn.textContent.trim()} books`);
+        }
+      });
+    });
+
+    // ==================== COUNTER ANIMATION ====================
+    const counters = document.querySelectorAll('[data-count]');
+    counters.forEach(counter => {
+      const target = parseInt(counter.dataset.count);
+      ScrollTrigger.create({
+        trigger: counter,
+        start: 'top 85%',
+        onEnter: () => {
+          gsap.to(counter, {
+            innerText: target,
+            duration: 2,
+            ease: 'power2.out',
+            snap: { innerText: 1 },
+            onUpdate: function() {
+              const val = Math.round(parseFloat(counter.innerText));
+              if (target >= 1000) {
+                counter.innerText = (val / 1000).toFixed(val >= target ? 0 : 1) + 'K+';
+              } else if (target === 100) {
+                counter.innerText = val + '+';
+              } else {
+                counter.innerText = val;
+              }
+            }
+          });
+        },
+        once: true,
+      });
+    });
+
+    // ==================== NEWSLETTER FORM ====================
+    const newsletterForm = document.getElementById('newsletter-form');
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value;
+      if (email) {
+        showToast('Welcome aboard! Check your inbox for a confirmation.');
+        newsletterForm.reset();
+      }
+    });
+
+    // ==================== CONTACT FORM ====================
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Message sent! I\'ll get back to you within 48 hours.');
+      contactForm.reset();
+    });
+
+    // ==================== TOAST NOTIFICATION ====================
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
+    // ==================== BACK TO TOP ====================
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        backToTop.style.opacity = '1';
+        backToTop.style.pointerEvents = 'all';
+      } else {
+        backToTop.style.opacity = '0';
+        backToTop.style.pointerEvents = 'none';
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      lenis.scrollTo(0);
+    });
+
+    // ==================== LAZY LOADING IMAGES ====================
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(img => {
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
+      if (img.complete) {
+        img.classList.add('loaded');
+      }
+    });
+
+    // ==================== ACTIVE NAV LINK HIGHLIGHTING ====================
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    ScrollTrigger.create({
+      trigger: document.body,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('text-navy-900', 'dark:text-white');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('text-navy-900', 'dark:text-white');
+          }
+        });
+      }
+    });
+
+    // ==================== BOOK CARD HOVER PARALLAX ====================
+    document.querySelectorAll('.book-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        const inner = card.querySelector('.book-inner');
+        inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        const inner = card.querySelector('.book-inner');
+        inner.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+      });
+    });
+
+    // ==================== KEYBOARD SHORTCUT HINT ====================
+    // Show Cmd+K hint briefly on page load
+    setTimeout(() => {
+      const hint = document.createElement('div');
+      hint.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-navy-900 dark:bg-zinc-800 text-white text-xs px-4 py-2 rounded-full shadow-xl flex items-center gap-2 opacity-0 transition-opacity duration-500';
+      hint.innerHTML = '<span class="text-zinc-400">Search:</span> <kbd class="bg-zinc-700 px-1.5 py-0.5 rounded text-[10px]">⌘K</kbd>';
+      document.body.appendChild(hint);
+      requestAnimationFrame(() => hint.style.opacity = '1');
+      setTimeout(() => {
+        hint.style.opacity = '0';
+        setTimeout(() => hint.remove(), 500);
+      }, 3000);
+    }, 2000);
+
+    // ==================== SMOOTH SECTION TRANSITIONS ====================
+    // Add subtle parallax to hero portrait
+    const heroPortrait = document.querySelector('#home .reveal.relative');
+    if (heroPortrait) {
+      gsap.to(heroPortrait, {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#home',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    }
+
+    // ==================== PRELOADER SIMULATION ====================
+    // Minimal preloader for premium feel
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+
+    // ==================== ANALYTICS PLACEHOLDER ====================
+    // Meta Pixel placeholder
+    /*
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    */
+
+    // Google Analytics placeholder
+    /*
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_ID');
+    */
+
+    console.log('%c🏛️ Dr. Edwin Kimemia', 'font-size: 20px; font-weight: bold; color: #0a1f3a;');
+    console.log('%cBuilding a Healthier Africa, One Book at a Time.', 'font-size: 12px; color: #c8a45e;');
+    console.log('%cdrkimemia.com', 'font-size: 11px; color: #71717a;');
+  </script>
+</body>
+</html>
