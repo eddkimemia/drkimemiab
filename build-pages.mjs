@@ -11,18 +11,59 @@ const root = __dirname;
 
 /** WhatsApp order number (international, no +) */
 const WA_PHONE = "254715135141";
-const BOOK_PRICE = "KSh 499";
+const WA_DISPLAY = "+254 715 135 141";
+const BOOK_PRICE = "KES 499";
 
 function waLink(message) {
   return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
 }
 
 function waBuyMessage(title) {
-  return `Hello Dr. Kimemia, I want to buy "${title}" for ${BOOK_PRICE}. Please send M-Pesa payment details. I understand the book will be delivered on WhatsApp after payment.`;
+  return `Hello Dr. Kimemia, I want to buy "${title}" for ${BOOK_PRICE}. Please send me an M-Pesa STK push. My phone number for payment is: [your number]. After payment, please deliver the book to this WhatsApp and my email: [your email].`;
 }
 
 function waGeneralMessage() {
   return "Hello Dr. Kimemia, I found your website and would like to chat.";
+}
+
+const PAY_NOTE =
+  "KES 499 · Pay on site (M-Pesa STK) or WhatsApp · Delivered on WhatsApp & email after purchase";
+
+/** On-site M-Pesa checkout form + WhatsApp alternative */
+function purchaseBox(root, { slug, title, idSuffix = "" }) {
+  const formId = `checkout-form${idSuffix}`;
+  const statusId = `checkout-status${idSuffix}`;
+  return `
+  <div class="purchase-box reveal" id="buy${idSuffix}" data-book-slug="${slug}" data-book-title="${title.replace(/"/g, "&quot;")}">
+    <div class="purchase-box-head">
+      <h3>Buy this book · ${BOOK_PRICE}</h3>
+      <p class="text-sm muted">Pay with M-Pesa on this site, or order on WhatsApp. After payment, the book is sent to your WhatsApp and email.</p>
+    </div>
+    <form class="form checkout-form" id="${formId}" data-checkout-form novalidate>
+      <input type="hidden" name="bookSlug" value="${slug}">
+      <div class="form-group">
+        <label for="co-name${idSuffix}">Full name (optional)</label>
+        <input id="co-name${idSuffix}" name="name" type="text" autocomplete="name" placeholder="Your name">
+      </div>
+      <div class="form-row form-row--2">
+        <div class="form-group">
+          <label for="co-phone${idSuffix}">M-Pesa phone *</label>
+          <input id="co-phone${idSuffix}" name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX" pattern="[0-9+\\s\\-]{9,15}">
+          <p class="form-error">Enter a valid M-Pesa number.</p>
+        </div>
+        <div class="form-group">
+          <label for="co-email${idSuffix}">Email for delivery *</label>
+          <input id="co-email${idSuffix}" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          <p class="form-error">Valid email required.</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Pay ${BOOK_PRICE} · M-Pesa STK push</button>
+      <p class="form-note">You will get an STK prompt on your phone. Enter your M-Pesa PIN to complete.</p>
+      <div id="${statusId}" class="checkout-status" role="status" aria-live="polite" hidden></div>
+    </form>
+    <div class="purchase-divider"><span>or</span></div>
+    <a class="btn btn-whatsapp btn-block" href="${waLink(waBuyMessage(title))}" target="_blank" rel="noopener noreferrer">${icon("whatsapp")} Buy via WhatsApp · ${WA_DISPLAY}</a>
+  </div>`;
 }
 
 function icons() {
@@ -218,9 +259,10 @@ function footer(root) {
     <span id="toast-message">Success!</span>
   </div>
   <button type="button" id="back-to-top" class="back-top" aria-label="Back to top">${icon("arrow-up")}</button>
-  <a href="${waLink(waGeneralMessage())}" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a href="${waLink(waGeneralMessage())}" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp ${WA_DISPLAY}">
     ${icon("whatsapp", "whatsapp-float-icon")}
     <span class="whatsapp-float-label">WhatsApp</span>
+    <span class="whatsapp-float-phone">${WA_DISPLAY}</span>
   </a>
   <script src="${root}js/main.js" defer></script>`;
 }
@@ -265,10 +307,10 @@ function bookCard(root, { slug, cover, tag, title, blurb, chip, chipClass, ratin
         <span class="chip ${chipClass || ""}">${chip}</span>
         <span class="book-price">${BOOK_PRICE}</span>
       </div>
-      <p class="book-delivery text-xs muted">Pay via M-Pesa · Delivered on WhatsApp</p>
+      <p class="book-delivery text-xs muted">${PAY_NOTE}</p>
       <div class="book-actions">
-        <a class="btn btn-primary" href="${root}books/${slug}.html">Details</a>
-        <a class="btn btn-whatsapp" href="${waLink(waBuyMessage(title))}" target="_blank" rel="noopener noreferrer">${icon("whatsapp")} Buy on WhatsApp</a>
+        <a class="btn btn-primary" href="${root}books/${slug}.html#buy">Buy · ${BOOK_PRICE}</a>
+        <a class="btn btn-whatsapp" href="${waLink(waBuyMessage(title))}" target="_blank" rel="noopener noreferrer">${icon("whatsapp")} WhatsApp</a>
       </div>
     </div>
   </article>`;
@@ -688,20 +730,28 @@ for (const b of books) {
           <span class="chip ${b.chipClass || ""}">${b.chip}</span>
           <h1 class="mt-4" style="font-size:clamp(1.75rem,3vw,2.5rem)">${b.title}</h1>
           <p class="lead mt-4">${b.long}</p>
+          <p class="book-price mt-6" style="font-size:1.5rem">${BOOK_PRICE}</p>
+          <p class="book-delivery text-sm muted mt-2">${PAY_NOTE}</p>
           <ul class="mt-6 space-y-4" style="list-style:disc;margin-left:1.25rem;color:var(--text-muted);font-weight:300">
             <li>${b.pages} pages · ★ ${b.rating} reader rating (illustrative)</li>
-            <li>Written in plain language for families and practitioners</li>
-            <li>African clinical and community context throughout</li>
+            <li>Pay ${BOOK_PRICE} on this site via M-Pesa STK push</li>
+            <li>Or order on WhatsApp — same price and delivery</li>
+            <li>Book delivered to your WhatsApp and email after purchase</li>
           </ul>
           <div class="flex flex-wrap gap-3 mt-8">
-            <a class="btn btn-primary" href="../contact.html?subject=${encodeURIComponent("Order: " + b.title)}">Buy / Order</a>
-            <a class="btn btn-secondary" href="../contact.html?subject=${encodeURIComponent("Preview request: " + b.title)}">Request preview</a>
+            <a class="btn btn-primary" href="#buy">Buy on site · ${BOOK_PRICE}</a>
+            <a class="btn btn-whatsapp" href="${waLink(waBuyMessage(b.title))}" target="_blank" rel="noopener noreferrer">${icon("whatsapp")} WhatsApp order</a>
             <a class="btn btn-ghost" href="../books.html">All books</a>
           </div>
         </div>
       </div>
     </div>
   </header>
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:36rem">
+      ${purchaseBox("../", { slug: b.slug, title: b.title })}
+    </div>
+  </section>
   <section class="section">
     <div class="container article">
       <h2 class="reveal">Who this book is for</h2>
@@ -948,133 +998,13 @@ for (const p of posts) {
   );
 }
 
-// MEDIA
-write(
-  "media.html",
-  page(
-    {
-      title: "Media — Dr. Edwin Kimemia",
-      description: "Press features, interviews, and media kit for Dr. Edwin Kimemia.",
-      root: "",
-      page: "media",
-      canonical: "https://drkimemia.com/media.html",
-    },
-    `
-  <header class="page-header">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Media</span></nav>
-      <h1 class="reveal">In the <span class="italic gold">spotlight</span></h1>
-      <p class="lead reveal">Interviews, podcasts, and long-form features. For booking, use the contact page.</p>
-    </div>
-  </header>
-  <section class="section">
-    <div class="container">
-      <div class="grid md-grid-3">
-        <article class="media-card reveal">
-          <div class="media-thumb"><div class="img-fallback">TV Interview</div><div class="play-hint"><div class="play-btn">${icon("play")}</div></div><span class="media-tag media-tag--red">TV</span></div>
-          <div class="media-body"><h3>Prevention Is the Future of African Healthcare</h3><p class="meta">Citizen TV · 2024</p></div>
-        </article>
-        <article class="media-card reveal">
-          <div class="media-thumb"><div class="img-fallback">Podcast</div><span class="media-tag media-tag--purple">Podcast</span></div>
-          <div class="media-body"><h3>AI Will Transform How Africa Does Medicine</h3><p class="meta">The African Tech Podcast · 2024</p></div>
-        </article>
-        <article class="media-card reveal">
-          <div class="media-thumb"><div class="img-fallback">Article</div><span class="media-tag">Article</span></div>
-          <div class="media-body"><h3>Why I Left the Ward to Write Books</h3><p class="meta">The Standard · Long Read · 2024</p></div>
-        </article>
-      </div>
-      <div class="banner mt-12 reveal">
-        <div class="flex items-center gap-4">
-          <div class="card-icon card-icon--navy">${icon("download")}</div>
-          <div>
-            <h3>Press & media kit</h3>
-            <p class="text-sm muted">Headshots, bio, book covers, and brand assets — request via contact.</p>
-          </div>
-        </div>
-        <a href="contact.html?subject=Media%20kit%20request" class="btn btn-primary">Request kit</a>
-      </div>
-    </div>
-  </section>
-`
-  )
-);
-
-// RESOURCES
-write(
-  "resources.html",
-  page(
-    {
-      title: "Free Resources — Dr. Edwin Kimemia",
-      description: "Free health checklists, meal guidance, trackers, and a BMI calculator.",
-      root: "",
-      page: "resources",
-      canonical: "https://drkimemia.com/resources.html",
-    },
-    `
-  <header class="page-header">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Resources</span></nav>
-      <h1 class="reveal">Tools for a <span class="italic gold">healthier</span> life</h1>
-      <p class="lead reveal">Practical guides and tools. Health knowledge should never have a paywall.</p>
-    </div>
-  </header>
-  <section class="section">
-    <div class="container">
-      <div class="grid sm-grid-2 lg-grid-4 mb-16">
-        <a href="#" class="card reveal" data-download="Preventive Care Checklist">
-          <div class="card-icon icon-red">${icon("download")}</div>
-          <h3>Preventive Care Checklist</h3>
-          <p class="text-sm muted mt-2">Age-by-age screenings every family should know.</p>
-          <span class="link-more mt-4">Download PDF ${icon("download")}</span>
-        </a>
-        <a href="#" class="card reveal" data-download="African Meal Plan Guide">
-          <div class="card-icon card-icon--green">${icon("download")}</div>
-          <h3>African Meal Plan Guide</h3>
-          <p class="text-sm muted mt-2">7-day balanced plans using local foods.</p>
-          <span class="link-more mt-4">Download PDF ${icon("download")}</span>
-        </a>
-        <a href="#" class="card reveal" data-download="Blood Pressure Tracker">
-          <div class="card-icon icon-blue">${icon("download")}</div>
-          <h3>Blood Pressure Tracker</h3>
-          <p class="text-sm muted mt-2">Log readings and spot trends over time.</p>
-          <span class="link-more mt-4">Download PDF ${icon("download")}</span>
-        </a>
-        <div class="card reveal">
-          <div class="card-icon icon-purple">${icon("check")}</div>
-          <h3>BMI Calculator</h3>
-          <p class="text-sm muted mt-2">A screening number—not a full diagnosis.</p>
-          <a href="#bmi" class="link-more mt-4">Use free tool ${icon("arrow-right")}</a>
-        </div>
-      </div>
-      <div id="bmi" class="tool-card form reveal">
-        <h2 class="h3 mb-4">BMI calculator</h2>
-        <form id="bmi-form">
-          <div class="form-group">
-            <label for="bmi-height">Height (cm) *</label>
-            <input id="bmi-height" name="height" type="number" min="50" max="250" step="0.1" required placeholder="170">
-          </div>
-          <div class="form-group">
-            <label for="bmi-weight">Weight (kg) *</label>
-            <input id="bmi-weight" name="weight" type="number" min="20" max="400" step="0.1" required placeholder="70">
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Calculate BMI</button>
-        </form>
-        <div id="bmi-result" class="tool-result" role="status"></div>
-        <p class="form-note">BMI is a population screening tool. Body composition, age, and clinical context matter. Consult a qualified clinician for personal advice.</p>
-      </div>
-    </div>
-  </section>
-`
-  )
-);
-
 // CONTACT
 write(
   "contact.html",
   page(
     {
       title: "Contact — Dr. Edwin Kimemia",
-      description: "Contact Dr. Edwin Kimemia for speaking, media, partnerships, and bulk book orders.",
+      description: "Contact Dr. Edwin Kimemia for speaking, partnerships, bulk book orders, and general inquiries.",
       root: "",
       page: "contact",
       canonical: "https://drkimemia.com/contact.html",
@@ -1084,7 +1014,7 @@ write(
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></nav>
       <h1 class="reveal">Let's <span class="italic gold">connect</span></h1>
-      <p class="lead reveal">Speaking, media, bulk orders, partnerships—or a general inquiry.</p>
+      <p class="lead reveal">Speaking, bulk orders, partnerships—or a general inquiry.</p>
     </div>
   </header>
   <section class="section">
@@ -1097,13 +1027,14 @@ write(
           </div>
           <div class="contact-option">
             <div class="card-icon card-icon--navy">${icon("book")}</div>
-            <div><h3>Media & press</h3><p class="text-sm muted mt-1">Interviews, podcasts, features, press kit.</p></div>
+            <div><h3>Book orders</h3><p class="text-sm muted mt-1">All books ${BOOK_PRICE}. Pay via M-Pesa STK push; delivered on WhatsApp & email.</p></div>
           </div>
           <div class="contact-option">
             <div class="card-icon card-icon--green">${icon("mail")}</div>
             <div><h3>Partnerships & bulk orders</h3><p class="text-sm muted mt-1">Corporate wellness, clinics, volume book orders.</p></div>
           </div>
-          <p class="text-sm muted mt-6">Prefer email? <a class="gold" href="mailto:hello@drkimemia.com">hello@drkimemia.com</a></p>
+          <p class="text-sm muted mt-6">WhatsApp: <a class="gold" href="${waLink(waGeneralMessage())}" target="_blank" rel="noopener noreferrer">${WA_DISPLAY}</a></p>
+          <p class="text-sm muted">Email: <a class="gold" href="mailto:hello@drkimemia.com">hello@drkimemia.com</a></p>
         </div>
         <div class="reveal">
           <form id="contact-form" class="form" action="https://formsubmit.co/ajax/hello@drkimemia.com" method="POST" data-subject="Contact form — drkimemia.com" data-success="Message sent. I'll respond within 48 hours.">
@@ -1181,71 +1112,6 @@ write(
   )
 );
 
-// COURSES
-write(
-  "courses.html",
-  page(
-    {
-      title: "Courses & Roadmap — Dr. Edwin Kimemia",
-      description: "Upcoming Digital Health Academy and roadmap for courses and children's health books.",
-      root: "",
-      page: "courses",
-      canonical: "https://drkimemia.com/courses.html",
-    },
-    `
-  <header class="page-header">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Courses</span></nav>
-      <h1 class="reveal">What's <span class="italic gold">next</span></h1>
-      <p class="lead reveal">Courses and programs in development. Join the newsletter for launch updates.</p>
-    </div>
-  </header>
-  <section class="section">
-    <div class="container">
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-marker"><div class="timeline-dot">25</div><div class="timeline-line"></div></div>
-          <div>
-            <span class="label">2025</span>
-            <h3 class="mt-2">Digital Health Academy</h3>
-            <p class="text-sm muted mt-2">Online courses on preventive healthcare, medical literacy, and healthy living—designed for African audiences.</p>
-            <span class="chip mt-3" style="display:inline-block">Platform launch</span>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-marker"><div class="timeline-dot" style="background:var(--green-500)">26</div><div class="timeline-line"></div></div>
-          <div>
-            <span class="label" style="color:var(--green-600)">2026</span>
-            <h3 class="mt-2">Children's Health Book Series</h3>
-            <p class="text-sm muted mt-2">Illustrated books teaching children about bodies, hygiene, nutrition, and care.</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-marker"><div class="timeline-dot" style="background:var(--navy-700)">27</div><div class="timeline-line"></div></div>
-          <div>
-            <span class="label" style="color:var(--navy-600)">2027</span>
-            <h3 class="mt-2">The Health Leadership Handbook</h3>
-            <p class="text-sm muted mt-2">A guide for healthcare professionals stepping into leadership roles.</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-marker"><div class="timeline-dot" style="background:var(--zinc-400)">∞</div></div>
-          <div>
-            <span class="label" style="color:var(--zinc-400)">Beyond</span>
-            <h3 class="mt-2">Publishing brand & health movement</h3>
-            <p class="text-sm muted mt-2">Resources, community, and media that serve one mission: longer, healthier lives.</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-12 reveal">
-        <a href="contact.html#newsletter" class="btn btn-primary">Get launch updates</a>
-      </div>
-    </div>
-  </section>
-`
-  )
-);
-
 // LEGAL
 function legalPage(file, title, body) {
   write(
@@ -1282,11 +1148,11 @@ legalPage(
   <h2>Information we collect</h2>
   <ul>
     <li><strong>Contact & newsletter forms:</strong> name, email, and message content you submit.</li>
+    <li><strong>Book orders:</strong> WhatsApp number, phone for M-Pesa STK push, and email for delivery after purchase.</li>
     <li><strong>Technical data:</strong> basic server or analytics logs (if enabled), such as browser type and pages visited.</li>
-    <li><strong>Preferences:</strong> dark mode preference stored in your browser (localStorage).</li>
   </ul>
   <h2>How we use information</h2>
-  <p>To respond to inquiries, send newsletters you opted into, improve the website, and meet legal obligations.</p>
+  <p>To respond to inquiries, process book orders (M-Pesa STK push payment and digital delivery via WhatsApp and email), send newsletters you opted into, improve the website, and meet legal obligations.</p>
   <h2>Third parties</h2>
   <p>Form submissions may be processed by FormSubmit or a similar form provider. Fonts may load from Google Fonts. Replace these providers with your own stack when you go live if required by your compliance needs.</p>
   <h2>Your rights</h2>
@@ -1303,6 +1169,8 @@ legalPage(
   <p>By using drkimemia.com you agree to these terms.</p>
   <h2>Educational purpose</h2>
   <p>Content on this site is for general education and does not create a doctor–patient relationship. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of a qualified health provider with questions about a medical condition.</p>
+  <h2>Book purchases</h2>
+  <p>Digital books are priced at ${BOOK_PRICE} each. You may pay on this website via M-Pesa STK push, or order on WhatsApp (${WA_DISPLAY}). After successful payment, the book is delivered to your WhatsApp number and email address.</p>
   <h2>Intellectual property</h2>
   <p>Books, text, branding, and site design are owned by Dr. Edwin Kimemia or respective rights holders. You may not copy or redistribute content for commercial use without permission.</p>
   <h2>Limitation of liability</h2>
@@ -1316,15 +1184,15 @@ legalPage(
   "cookies.html",
   "Cookie Policy",
   `
-  <p>This site aims to minimize tracking.</p>
+  <p>This site aims to minimize tracking. The site uses a dark theme only; no theme preference is stored.</p>
   <h2>Essential storage</h2>
   <ul>
-    <li><strong>localStorage (darkMode):</strong> remembers your theme preference. Not used for advertising.</li>
+    <li>No essential cookies or localStorage are required for browsing the site.</li>
   </ul>
   <h2>Third-party cookies</h2>
-  <p>If analytics, ads, or embedded media are added later, this policy will list them. Google Fonts may process connection data when fonts load.</p>
+  <p>If analytics, ads, or embedded media are added later, this policy will list them. Google Fonts may process connection data when fonts load. WhatsApp and M-Pesa are used off-site for book orders.</p>
   <h2>Your choices</h2>
-  <p>You can clear site data in your browser settings. Disabling localStorage may reset theme preference each visit.</p>
+  <p>You can clear site data in your browser settings at any time.</p>
 `
 );
 
@@ -1333,45 +1201,63 @@ fs.writeFileSync(
   path.join(root, "README.md"),
   `# Dr. Edwin Kimemia — Website
 
-Static multi-page site. Fast by design: no Tailwind CDN, no Lenis, no GSAP.
+Static multi-page site (dark theme only) with a Node.js M-Pesa STK checkout API.
 
-## Run locally
-
-Open \`index.html\` in a browser, or:
+## Run (recommended)
 
 \`\`\`bash
-npx serve .
+npm install
+cp .env.example .env   # Windows: copy .env.example .env
+npm start
 \`\`\`
+
+Open http://localhost:3000
+
+Without Daraja keys, checkout runs in **mock mode** (UI + order flow still work).
 
 ## Rebuild pages
 
 After editing \`build-pages.mjs\`:
 
 \`\`\`bash
-node build-pages.mjs
+npm run build:pages
 \`\`\`
 
-## Configure forms
+## Book sales
 
-Forms post via [FormSubmit](https://formsubmit.co) to \`hello@drkimemia.com\`.  
-Confirm the email once in your inbox, or change the address in:
+- All books: **KES 499**
+- **Pay on site** — M-Pesa STK push (\`POST /api/checkout\`)
+- **Or WhatsApp** — +254 715 135 141
+- After payment: delivered on **WhatsApp and email**
 
-- \`build-pages.mjs\` form actions
-- \`js/main.js\` → \`SITE.formEmail\`
+### M-Pesa setup (live / sandbox)
 
-## Replace placeholders
+1. Create an app on [Safaricom Daraja](https://developer.safaricom.co.ke)
+2. Put Consumer Key, Secret, Passkey, Shortcode in \`.env\`
+3. Set \`PUBLIC_URL\` / \`MPESA_CALLBACK_URL\` to a **public HTTPS** URL  
+   (use [ngrok](https://ngrok.com) when testing locally)
+4. Set \`MPESA_ENV=sandbox\` or \`production\`
+5. Optional SMTP vars for purchase emails
 
-- Social profile URLs in nav/footer
-- Portrait images (currently CSS fallbacks)
-- Real buy links / store URLs on book pages
-- PDF files for resource downloads
+### API
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| POST | \`/api/checkout\` | Start STK (body: bookSlug, phone, email, name?) |
+| GET | \`/api/orders/:id\` | Poll payment status |
+| POST | \`/api/mpesa/callback\` | Safaricom STK callback |
+| GET | \`/api/books\` | Catalog + price |
+| GET | \`/api/health\` | Health + mock flag |
+
+## Contact forms
+
+Forms still post via [FormSubmit](https://formsubmit.co) to \`hello@drkimemia.com\`.
 
 ## Performance notes
 
-- Shared \`css/main.css\` + \`js/main.js\` only
-- Inline SVG icons (no icon CDN)
-- IntersectionObserver reveals (respects reduced motion)
-- Single rAF-throttled scroll handler
+- Shared \`css/main.css\` + \`js/main.js\`
+- Floating WhatsApp button site-wide
+- Express serves static files + API on one port
 `,
   "utf8"
 );

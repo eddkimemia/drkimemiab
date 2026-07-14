@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-root="../" data-page="books">
+<html lang="en" class="dark" data-root="../" data-page="books">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0a">
   <title>The Prevention Blueprint — Dr. Edwin Kimemia</title>
   <meta name="description" content="Your step-by-step guide to staying healthy and avoiding disease.">
   <meta name="author" content="Dr. Edwin Kimemia">
@@ -19,16 +21,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css">
-  <script>
-    (function () {
-      try {
-        var d = localStorage.getItem('darkMode');
-        if (d === 'true' || (d === null && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Book","name":"The Prevention Blueprint","author":{"@type":"Person","name":"Dr. Edwin Kimemia"},"description":"Your step-by-step guide to staying healthy and avoiding disease.","numberOfPages":"250","url":"https://drkimemia.com/books/prevention-blueprint.html"}
 </script>
@@ -40,9 +32,8 @@
   
 <svg xmlns="http://www.w3.org/2000/svg" class="sr-only" aria-hidden="true">
   <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h16"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
@@ -60,60 +51,51 @@
   <symbol id="i-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
   <symbol id="i-facebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
 </svg>
+  <header class="site-header">
   <nav id="main-nav" class="nav" aria-label="Primary">
     <div class="container nav-inner">
       <a href="../index.html" class="logo">
         <span class="logo-mark">K</span>
         <span class="logo-text">Dr. Edwin Kimemia</span>
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="desktop-nav">
         <a href="../index.html" class="nav-link" data-nav="home">Home</a>
         <a href="../about.html" class="nav-link" data-nav="about">About</a>
         <a href="../books.html" class="nav-link" data-nav="books">Books</a>
         <a href="../speaking.html" class="nav-link" data-nav="speaking">Speaking</a>
         <a href="../blog.html" class="nav-link" data-nav="blog">Blog</a>
-        <a href="../media.html" class="nav-link" data-nav="media">Media</a>
-        <a href="../resources.html" class="nav-link" data-nav="resources">Resources</a>
         <a href="../contact.html" class="nav-link" data-nav="contact">Contact</a>
-        <a href="../courses.html" class="nav-link nav-link--accent" data-nav="courses">Courses</a>
       </div>
       <div class="nav-actions">
         <button type="button" id="search-btn" class="icon-btn" aria-label="Open search" aria-haspopup="dialog">
           <svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-search" xlink:href="#i-search"/></svg>
         </button>
-        <button type="button" id="dark-toggle" class="icon-btn" aria-label="Toggle dark mode">
-          <span class="theme-icon-sun"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sun" xlink:href="#i-sun"/></svg></span>
-          <span class="theme-icon-moon"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-moon" xlink:href="#i-moon"/></svg></span>
-        </button>
         <a href="../contact.html#newsletter" class="btn btn-primary btn-sm nav-cta"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mail" xlink:href="#i-mail"/></svg> Subscribe</a>
         <button type="button" id="menu-toggle" class="icon-btn menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <span id="menu-icon-open"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-menu" xlink:href="#i-menu"/></svg></span>
-          <span id="menu-icon-close" class="hidden"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-x" xlink:href="#i-x"/></svg></span>
+          <span id="menu-icon-open" class="menu-icon"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-menu" xlink:href="#i-menu"/></svg></span>
+          <span id="menu-icon-close" class="menu-icon hidden"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-x" xlink:href="#i-x"/></svg></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <a href="../index.html" class="mobile-nav-link" data-nav="home">Home</a>
-    <a href="../about.html" class="mobile-nav-link" data-nav="about">About</a>
-    <a href="../books.html" class="mobile-nav-link" data-nav="books">Books</a>
-    <a href="../speaking.html" class="mobile-nav-link" data-nav="speaking">Speaking</a>
-    <a href="../blog.html" class="mobile-nav-link" data-nav="blog">Blog</a>
-    <a href="../media.html" class="mobile-nav-link" data-nav="media">Media</a>
-    <a href="../resources.html" class="mobile-nav-link" data-nav="resources">Resources</a>
-    <a href="../courses.html" class="mobile-nav-link" data-nav="courses">Courses</a>
-    <a href="../contact.html" class="mobile-nav-link" data-nav="contact">Contact</a>
-    <div class="mobile-menu-footer">
-      <a href="../contact.html#newsletter" class="btn btn-primary mobile-nav-link"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mail" xlink:href="#i-mail"/></svg> Join the Newsletter</a>
-      <div class="mobile-social">
-        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-twitter" xlink:href="#i-twitter"/></svg></a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-linkedin" xlink:href="#i-linkedin"/></svg></a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-instagram" xlink:href="#i-instagram"/></svg></a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-youtube" xlink:href="#i-youtube"/></svg></a>
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation" hidden>
+    <div class="mobile-menu-panel">
+      <nav class="mobile-nav-list" aria-label="Mobile">
+        <a href="../index.html" class="mobile-nav-link" data-nav="home">Home</a>
+        <a href="../about.html" class="mobile-nav-link" data-nav="about">About</a>
+        <a href="../books.html" class="mobile-nav-link" data-nav="books">Books</a>
+        <a href="../speaking.html" class="mobile-nav-link" data-nav="speaking">Speaking</a>
+        <a href="../blog.html" class="mobile-nav-link" data-nav="blog">Blog</a>
+        <a href="../contact.html" class="mobile-nav-link" data-nav="contact">Contact</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="https://wa.me/254715135141?text=Hello%20Dr.%20Kimemia%2C%20I%20found%20your%20website%20and%20would%20like%20to%20chat." class="btn btn-whatsapp mobile-nav-link" target="_blank" rel="noopener noreferrer"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-whatsapp" xlink:href="#i-whatsapp"/></svg> Chat on WhatsApp</a>
+        <a href="../contact.html#newsletter" class="btn btn-primary mobile-nav-link"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-mail" xlink:href="#i-mail"/></svg> Join the Newsletter</a>
       </div>
     </div>
   </div>
+  </header>
 
   <div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-label="Search site" aria-hidden="true">
     <div class="search-box">
@@ -142,20 +124,58 @@
           <span class="chip ">Health</span>
           <h1 class="mt-4" style="font-size:clamp(1.75rem,3vw,2.5rem)">The Prevention Blueprint</h1>
           <p class="lead mt-4">A structured playbook for personal and community prevention: checklists, age-based actions, and clinic-ready habits.</p>
+          <p class="book-price mt-6" style="font-size:1.5rem">KES 499</p>
+          <p class="book-delivery text-sm muted mt-2">KES 499 · Pay on site (M-Pesa STK) or WhatsApp · Delivered on WhatsApp & email after purchase</p>
           <ul class="mt-6 space-y-4" style="list-style:disc;margin-left:1.25rem;color:var(--text-muted);font-weight:300">
             <li>250 pages · ★ 4.9 reader rating (illustrative)</li>
-            <li>Written in plain language for families and practitioners</li>
-            <li>African clinical and community context throughout</li>
+            <li>Pay KES 499 on this site via M-Pesa STK push</li>
+            <li>Or order on WhatsApp — same price and delivery</li>
+            <li>Book delivered to your WhatsApp and email after purchase</li>
           </ul>
           <div class="flex flex-wrap gap-3 mt-8">
-            <a class="btn btn-primary" href="../contact.html?subject=Order%3A%20The%20Prevention%20Blueprint">Buy / Order</a>
-            <a class="btn btn-secondary" href="../contact.html?subject=Preview%20request%3A%20The%20Prevention%20Blueprint">Request preview</a>
+            <a class="btn btn-primary" href="#buy">Buy on site · KES 499</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/254715135141?text=Hello%20Dr.%20Kimemia%2C%20I%20want%20to%20buy%20%22The%20Prevention%20Blueprint%22%20for%20KES%20499.%20Please%20send%20me%20an%20M-Pesa%20STK%20push.%20My%20phone%20number%20for%20payment%20is%3A%20%5Byour%20number%5D.%20After%20payment%2C%20please%20deliver%20the%20book%20to%20this%20WhatsApp%20and%20my%20email%3A%20%5Byour%20email%5D." target="_blank" rel="noopener noreferrer"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-whatsapp" xlink:href="#i-whatsapp"/></svg> WhatsApp order</a>
             <a class="btn btn-ghost" href="../books.html">All books</a>
           </div>
         </div>
       </div>
     </div>
   </header>
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:36rem">
+      
+  <div class="purchase-box reveal" id="buy" data-book-slug="prevention-blueprint" data-book-title="The Prevention Blueprint">
+    <div class="purchase-box-head">
+      <h3>Buy this book · KES 499</h3>
+      <p class="text-sm muted">Pay with M-Pesa on this site, or order on WhatsApp. After payment, the book is sent to your WhatsApp and email.</p>
+    </div>
+    <form class="form checkout-form" id="checkout-form" data-checkout-form novalidate>
+      <input type="hidden" name="bookSlug" value="prevention-blueprint">
+      <div class="form-group">
+        <label for="co-name">Full name (optional)</label>
+        <input id="co-name" name="name" type="text" autocomplete="name" placeholder="Your name">
+      </div>
+      <div class="form-row form-row--2">
+        <div class="form-group">
+          <label for="co-phone">M-Pesa phone *</label>
+          <input id="co-phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX" pattern="[0-9+\s\-]{9,15}">
+          <p class="form-error">Enter a valid M-Pesa number.</p>
+        </div>
+        <div class="form-group">
+          <label for="co-email">Email for delivery *</label>
+          <input id="co-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          <p class="form-error">Valid email required.</p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Pay KES 499 · M-Pesa STK push</button>
+      <p class="form-note">You will get an STK prompt on your phone. Enter your M-Pesa PIN to complete.</p>
+      <div id="checkout-status" class="checkout-status" role="status" aria-live="polite" hidden></div>
+    </form>
+    <div class="purchase-divider"><span>or</span></div>
+    <a class="btn btn-whatsapp btn-block" href="https://wa.me/254715135141?text=Hello%20Dr.%20Kimemia%2C%20I%20want%20to%20buy%20%22The%20Prevention%20Blueprint%22%20for%20KES%20499.%20Please%20send%20me%20an%20M-Pesa%20STK%20push.%20My%20phone%20number%20for%20payment%20is%3A%20%5Byour%20number%5D.%20After%20payment%2C%20please%20deliver%20the%20book%20to%20this%20WhatsApp%20and%20my%20email%3A%20%5Byour%20email%5D." target="_blank" rel="noopener noreferrer"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-whatsapp" xlink:href="#i-whatsapp"/></svg> Buy via WhatsApp · +254 715 135 141</a>
+  </div>
+    </div>
+  </section>
   <section class="section">
     <div class="container article">
       <h2 class="reveal">Who this book is for</h2>
@@ -204,10 +224,10 @@
         <div>
           <h4>More</h4>
           <ul>
-            <li><a href="../media.html">Media</a></li>
-            <li><a href="../resources.html">Resources</a></li>
-            <li><a href="../courses.html">Courses</a></li>
             <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../contact.html#newsletter">Newsletter</a></li>
+            <li><a href="https://wa.me/254715135141?text=Hello%20Dr.%20Kimemia%2C%20I%20found%20your%20website%20and%20would%20like%20to%20chat." target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
           </ul>
         </div>
         <div>
@@ -236,6 +256,11 @@
     <span id="toast-message">Success!</span>
   </div>
   <button type="button" id="back-to-top" class="back-top" aria-label="Back to top"><svg class="" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow-up" xlink:href="#i-arrow-up"/></svg></button>
+  <a href="https://wa.me/254715135141?text=Hello%20Dr.%20Kimemia%2C%20I%20found%20your%20website%20and%20would%20like%20to%20chat." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp +254 715 135 141">
+    <svg class="whatsapp-float-icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-whatsapp" xlink:href="#i-whatsapp"/></svg>
+    <span class="whatsapp-float-label">WhatsApp</span>
+    <span class="whatsapp-float-phone">+254 715 135 141</span>
+  </a>
   <script src="../js/main.js" defer></script>
 </body>
 </html>

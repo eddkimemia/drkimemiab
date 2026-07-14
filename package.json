@@ -1,0 +1,21 @@
+{
+  "name": "drkimemia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dr. Edwin Kimemia website with M-Pesa STK book checkout",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "build:pages": "node build-pages.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16"
+  }
+}

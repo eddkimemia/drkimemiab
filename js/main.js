@@ -64,13 +64,7 @@
       title: "Contact & Partnerships",
       type: "Contact",
       url: "contact.html",
-      keywords: "contact media press partnership bulk",
-    },
-    {
-      title: "Free Health Resources",
-      type: "Resources",
-      url: "resources.html",
-      keywords: "download checklist meal plan bmi tracker",
+      keywords: "contact partnership bulk order whatsapp mpesa",
     },
     {
       title: "About Dr. Edwin Kimemia",
@@ -194,16 +188,7 @@
     return String(val);
   }
 
-  // ---- Dark mode (class applied in <head> to avoid FOUC) ----
-  const darkToggle = qs("#dark-toggle");
-  if (darkToggle) {
-    darkToggle.addEventListener("click", () => {
-      const html = document.documentElement;
-      const next = !html.classList.contains("dark");
-      html.classList.toggle("dark", next);
-      localStorage.setItem("darkMode", next ? "true" : "false");
-    });
-  }
+  // Dark theme only — no theme toggle
 
   // ---- Mobile menu ----
   const menuToggle = qs("#menu-toggle");
@@ -529,42 +514,126 @@
   wireForm(qs("#newsletter-form"));
   wireForm(qs("#speaking-form"));
 
-  // ---- BMI calculator ----
-  const bmiForm = qs("#bmi-form");
-  if (bmiForm) {
-    bmiForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const heightCm = parseFloat(qs("#bmi-height").value);
-      const weightKg = parseFloat(qs("#bmi-weight").value);
-      const result = qs("#bmi-result");
-      if (!heightCm || !weightKg || heightCm < 50 || heightCm > 250 || weightKg < 20 || weightKg > 400) {
-        showToast("Enter a valid height (cm) and weight (kg).");
-        return;
-      }
-      const m = heightCm / 100;
-      const bmi = weightKg / (m * m);
-      let category = "Underweight";
-      if (bmi >= 18.5 && bmi < 25) category = "Normal range";
-      else if (bmi >= 25 && bmi < 30) category = "Overweight";
-      else if (bmi >= 30) category = "Obese range";
-      if (result) {
-        result.textContent =
-          "BMI: " +
-          bmi.toFixed(1) +
-          " — " +
-          category +
-          ". This is a screening number only, not a diagnosis. Speak with a clinician for personal advice.";
-        result.classList.add("is-show");
-      }
-    });
+  // ---- M-Pesa checkout (on-site STK) ----
+  const API_BASE = ""; // same origin when using `npm start`
+
+  function setCheckoutStatus(el, state, message) {
+    if (!el) return;
+    el.hidden = !message;
+    el.className = "checkout-status" + (state ? " is-" + state : "");
+    el.textContent = message || "";
   }
 
-  // ---- Resource download stubs (real PDFs can replace these) ----
-  qsa("[data-download]").forEach((el) => {
-    el.addEventListener("click", (e) => {
+  async function pollOrder(orderId, statusEl, attempts) {
+    const max = attempts || 40;
+    for (let i = 0; i < max; i++) {
+      await new Promise((r) => setTimeout(r, 2000));
+      try {
+        const res = await fetch(API_BASE + "/api/orders/" + encodeURIComponent(orderId));
+        const data = await res.json();
+        if (!data.ok || !data.order) continue;
+        const st = data.order.status;
+        if (st === "paid") {
+          setCheckoutStatus(
+            statusEl,
+            "success",
+            "Payment received" +
+              (data.order.mpesaReceiptNumber ? " · Receipt " + data.order.mpesaReceiptNumber : "") +
+              ". Your book will be delivered on WhatsApp and email shortly."
+          );
+          showToast("Payment successful. Check WhatsApp and email for your book.");
+          return true;
+        }
+        if (st === "failed") {
+          setCheckoutStatus(
+            statusEl,
+            "error",
+            data.order.resultDesc || "Payment was cancelled or failed. You can try again or order on WhatsApp."
+          );
+          return false;
+        }
+        setCheckoutStatus(statusEl, "pending", "Waiting for M-Pesa confirmation… (" + (i + 1) + ")");
+      } catch (_) {
+        /* keep polling */
+      }
+    }
+    setCheckoutStatus(
+      statusEl,
+      "pending",
+      "Still waiting for confirmation. If you paid, keep this page open or contact WhatsApp +254 715 135 141 with your receipt."
+    );
+    return false;
+  }
+
+  qsa("[data-checkout-form]").forEach((form) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = el.getAttribute("data-download") || "resource";
-      showToast("“" + name + "” will be available for download soon. Join the newsletter to be notified.");
+      clearFormErrors(form);
+      if (!form.checkValidity()) {
+        markInvalid(form);
+        showToast("Enter a valid M-Pesa phone and delivery email.");
+        return;
+      }
+
+      const box = form.closest(".purchase-box");
+      const statusEl =
+        (box && box.querySelector(".checkout-status")) ||
+        form.querySelector(".checkout-status");
+      const submitBtn = form.querySelector('[type="submit"]');
+      const original = submitBtn ? submitBtn.textContent : "";
+
+      const payload = {
+        bookSlug: form.bookSlug ? form.bookSlug.value : form.querySelector('[name="bookSlug"]')?.value,
+        phone: form.phone.value.trim(),
+        email: form.email.value.trim(),
+        name: form.name ? form.name.value.trim() : "",
+      };
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending STK…";
+      }
+      setCheckoutStatus(statusEl, "pending", "Sending M-Pesa STK push to your phone…");
+
+      try {
+        const res = await fetch(API_BASE + "/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok || !data.ok) {
+          setCheckoutStatus(statusEl, "error", data.error || "Could not start payment. Try WhatsApp order instead.");
+          showToast(data.error || "Checkout failed.");
+          return;
+        }
+
+        setCheckoutStatus(
+          statusEl,
+          "pending",
+          (data.message || "Check your phone for the M-Pesa prompt.") +
+            (data.mock ? " (Demo mode — payment will complete automatically in a few seconds.)" : "")
+        );
+        showToast(data.mock ? "Demo STK started…" : "Enter your M-Pesa PIN on your phone.");
+
+        await pollOrder(data.orderId, statusEl);
+        if (statusEl && statusEl.classList.contains("is-success")) {
+          form.reset();
+        }
+      } catch (err) {
+        setCheckoutStatus(
+          statusEl,
+          "error",
+          "Cannot reach the payment server. Run the site with npm start, or buy via WhatsApp."
+        );
+        showToast("Payment server unavailable. Use WhatsApp to order.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = original;
+        }
+      }
     });
   });
 
