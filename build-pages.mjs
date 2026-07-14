@@ -175,8 +175,8 @@ function nav(root) {
         <a href="${r}contact.html" class="mobile-nav-link" data-nav="contact">Contact</a>
       </nav>
       <div class="mobile-menu-footer">
-        <a href="${waLink(waGeneralMessage())}" class="btn btn-whatsapp mobile-nav-link" target="_blank" rel="noopener noreferrer">${icon("whatsapp")} Chat on WhatsApp</a>
-        <a href="${r}contact.html#newsletter" class="btn btn-primary mobile-nav-link">${icon("mail")} Join the Newsletter</a>
+        <a href="${waLink(waGeneralMessage())}" class="btn btn-whatsapp btn-block mobile-nav-link" target="_blank" rel="noopener noreferrer">${icon("whatsapp")} Chat on WhatsApp</a>
+        <a href="${r}contact.html#newsletter" class="btn btn-primary btn-block mobile-nav-link">${icon("mail")} Join the Newsletter</a>
       </div>
     </div>
   </div>

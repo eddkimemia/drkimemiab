@@ -191,36 +191,72 @@
   // Dark theme only — no theme toggle
 
   // ---- Mobile menu ----
+  // Note: #mobile-menu uses the HTML `hidden` attribute. Browsers map that to
+  // display:none !important, so we must clear it when opening — class alone is not enough.
   const menuToggle = qs("#menu-toggle");
   const mobileMenu = qs("#mobile-menu");
   let menuOpen = false;
+  let menuCloseTimer = null;
+
+  function setMenuIcons(open) {
+    const closeIcon = qs("#menu-icon-close");
+    const openIcon = qs("#menu-icon-open");
+    if (openIcon) openIcon.classList.toggle("hidden", open);
+    if (closeIcon) closeIcon.classList.toggle("hidden", !open);
+  }
 
   function openMenu() {
     if (!mobileMenu || !menuToggle) return;
+    if (menuCloseTimer) {
+      clearTimeout(menuCloseTimer);
+      menuCloseTimer = null;
+    }
     menuOpen = true;
-    mobileMenu.classList.add("is-open");
+    mobileMenu.hidden = false;
+    mobileMenu.setAttribute("aria-hidden", "false");
+    // Allow one frame so the slide-in transition runs after un-hiding
+    requestAnimationFrame(() => {
+      if (menuOpen) mobileMenu.classList.add("is-open");
+    });
     menuToggle.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-label", "Close menu");
     document.body.style.overflow = "hidden";
-    const closeIcon = qs("#menu-icon-close");
-    const openIcon = qs("#menu-icon-open");
-    if (openIcon) openIcon.classList.add("hidden");
-    if (closeIcon) closeIcon.classList.remove("hidden");
+    setMenuIcons(true);
   }
 
   function closeMenu() {
     if (!mobileMenu || !menuToggle) return;
+    if (!menuOpen && mobileMenu.hidden) return;
     menuOpen = false;
     mobileMenu.classList.remove("is-open");
+    mobileMenu.setAttribute("aria-hidden", "true");
     menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open menu");
     document.body.style.overflow = "";
-    const closeIcon = qs("#menu-icon-close");
-    const openIcon = qs("#menu-icon-open");
-    if (openIcon) openIcon.classList.remove("hidden");
-    if (closeIcon) closeIcon.classList.add("hidden");
+    setMenuIcons(false);
+    // Keep in DOM until slide-out finishes, then re-apply hidden
+    if (menuCloseTimer) clearTimeout(menuCloseTimer);
+    menuCloseTimer = setTimeout(() => {
+      menuCloseTimer = null;
+      if (!menuOpen) mobileMenu.hidden = true;
+    }, 360);
   }
 
   if (menuToggle) {
-    menuToggle.addEventListener("click", () => (menuOpen ? closeMenu() : openMenu()));
+    menuToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (menuOpen) closeMenu();
+      else openMenu();
+    });
+  }
+
+  // Tap backdrop area (the overlay itself, not the panel) to close
+  if (mobileMenu) {
+    mobileMenu.setAttribute("aria-hidden", "true");
+    mobileMenu.addEventListener("click", (e) => {
+      if (e.target === mobileMenu) closeMenu();
+    });
   }
 
   qsa(".mobile-nav-link").forEach((link) => {
