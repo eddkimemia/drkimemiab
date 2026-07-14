@@ -259,10 +259,9 @@ function footer(root) {
     <span id="toast-message">Success!</span>
   </div>
   <button type="button" id="back-to-top" class="back-top" aria-label="Back to top">${icon("arrow-up")}</button>
-  <a href="${waLink(waGeneralMessage())}" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp ${WA_DISPLAY}">
+  <a href="${waLink(waGeneralMessage())}" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Me on WhatsApp ${WA_DISPLAY}">
     ${icon("whatsapp", "whatsapp-float-icon")}
-    <span class="whatsapp-float-label">WhatsApp</span>
-    <span class="whatsapp-float-phone">${WA_DISPLAY}</span>
+    <span class="whatsapp-float-label">Chat with Me</span>
   </a>
   <script src="${root}js/main.js" defer></script>`;
 }
